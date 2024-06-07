@@ -1,0 +1,97 @@
+<form action="/submit-design" method="post" enctype="multipart/form-data">
+  <label for="title">Titre du design :</label>
+  <input type="text" id="title" name="title" required><br>
+
+  <label for="description">Description :</label>
+  <textarea id="description" name="description" required></textarea><br>
+
+  <label for="category">Catégorie :</label>
+  <select id="category" name="category" required>
+    <option value="logo">Logo</option>
+    <option value="poster">Affiche</option>
+    <option value="business-card">Carte de visite</option>
+    <option value="illustration">Illustration</option>
+    <option value="web-design">Webdesign</option>
+  </select><br>
+
+  <label for="style">Style/Thème :</label>
+  <select id="style" name="style" required>
+    <option value="minimalist">Minimaliste</option>
+    <option value="vintage">Vintage</option>
+    <option value="modern">Moderne</option>
+    <option value="abstract">Abstrait</option>
+    <option value="pop-art">Pop art</option>
+  </select><br>
+
+  <label for="dimensions">Dimensions :</label>
+  <input type="text" id="dimensions" name="dimensions" required><br>
+
+  <label for="file-formats">Formats de fichier disponibles :</label>
+  <select id="file-formats" name="file-formats" multiple required>
+    <option value="jpg">JPG</option>
+    <option value="png">PNG</option>
+    <option value="pdf">PDF</option>
+    <option value="ai">AI</option>
+    <option value="svg">SVG</option>
+  </select><br>
+
+  <label for="resolution">Résolution :</label>
+  <input type="number" id="resolution" name="resolution" required><br>
+
+  <label for="colors">Couleurs :</label>
+  <select id="colors" name="colors" required>
+    <option value="cmyk">CMJN</option>
+    <option value="rgb">RGB</option>
+    <option value="pantone">PANTONE</option>
+  </select><br>
+
+  <label for="designer-name">Nom du graphiste :</label>
+  <input type="text" id="designer-name" name="designer-name" required><br>
+
+  <label for="designer-bio">Biographie du graphiste :</label>
+  <textarea id="designer-bio" name="designer-bio" required></textarea><br>
+
+  <label for="designer-website">Site web du graphiste :</label>
+  <input type="url" id="designer-website" name="designer-website"><br>
+
+  <label for="price">Prix :</label>
+  <input type="number" id="price" name="price" required><br>
+
+  <label for="license">Licence :</label>
+  <select id="license" name="license" required>
+    <option value="personal">Usage personnel</option>
+    <option value="commercial">Usage commercial</option>
+  </select><br>
+
+  <label for="availability">Disponibilité :</label>
+  <select id="availability" name="availability" required>
+    <option value="available">Disponible</option>
+    <option value="on-demand">Sur commande</option>
+  </select><br>
+
+  <label for="delivery-options">Options de livraison :</label>
+  <select id="delivery-options" name="delivery-options" required>
+    <option value="digital">Téléchargement numérique</option>
+    <option value="physical">Impression physique</option>
+  </select><br>
+
+  <label for="main-image">Image principale du design :</label>
+  <input type="file" id="main-image" name="main-image" accept=".jpg, .png" required><br>
+
+  <label for="additional-images">Images supplémentaires :</label>
+  <input type="file" id="additional-images" name="additional-images" accept=".jpg, .png" multiple><br>
+
+  <label for="tags">Tags :</label>
+  <input type="text" id="tags" name="tags" placeholder="Séparez les tags par des virgules"><br>
+  <input type="file" multiple (change)="onFileSelected($event)" accept="image/*">
+<br>
+<!-- Affichage des photos sélectionnées -->
+<div *ngIf="selectedFiles && selectedFiles.length > 0">
+  <h4>Photos sélectionnées :</h4>
+  <div *ngFor="let file of selectedFiles">
+    <img [src]="getImgURL(file)" width="100" height="100">
+  </div>
+</div>
+  <input type="submit" value="Ajouter le design">
+
+</form>
