@@ -1,0 +1,64 @@
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+          <input type="text" id="username" class="login__input" formControlName="username" placeholder="Username" required>
+				</div>
+        <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+          <input type="text" id="adressLocation" class="login__input" formControlName="AdressLocation" placeholder="adress Location" required>          
+				</div>
+        <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+          <input type="text" id="tel" class="login__input" formControlName="tel"  placeholder="Phone number"  required>
+				</div>
+        <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+          <input type="email" id="email" formControlName="email" class="login__input" placeholder="Email" required>
+				</div>
+        <div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+			    <input type="password" id="password" formControlName="password"  class="login__input" placeholder="Password" required>
+    
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password" id="confirmpassword" formControlName="confirmpassword" class="login__input" placeholder="Confirm Password" required>
+				</div>
+        <div class="login__field">
+          <label class="fas fa-lock" for="dateDeNaissance">Sexe :</label><br>
+					<i class="login__icon fas fa-lock"></i>
+      <select id="sexe"  class="login__input"name="sexe" required>
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
+          <!-- Ajoutez d'autres options si nécessaire -->
+      </select>
+				</div>
+        <div class="login__field">
+          <label class="fas fa-lock" for="dateDeNaissance">Date de naissance :</label>
+					<i class="login__icon fas fa-lock"></i>
+          <input type="date" id="dateDeNaissance" class="login__input"  name="dateDeNaissance" required>
+				</div>
+				<button class="button login__submit">
+					<span class="button__text">Log In Now</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+			<div class="social-login">
+				<div class="social-icons">
+					<a href="#" class="social-login__icon fab fa-instagram"></a>
+					<a href="#" class="social-login__icon fab fa-facebook"></a>
+					<a href="#" class="social-login__icon fab fa-twitter"></a>
+				</div>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>

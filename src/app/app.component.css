@@ -1,0 +1,131 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #343a40;
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-header {
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    background-color: #212529;
+  }
+  
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+  }
+  
+  .sidebar ul li {
+    padding: 15px 20px;
+    cursor: pointer;
+    border-bottom: 1px solid #495057;
+  }
+  
+  .sidebar ul li.active, .sidebar ul li:hover {
+    background-color: #495057;
+  }
+  
+  .upgrade {
+    padding: 15px 20px;
+    background-color: #212529;
+  }
+  
+  .main-content {
+    flex-grow: 1;
+    background-color: #f8f9fa;
+    padding: 20px;
+  }
+  
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .topbar input {
+    padding: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .user-actions {
+    display: flex;
+    align-items: center;
+  }
+  
+  .bell-icon, .user-icon {
+    margin-left: 20px;
+    cursor: pointer;
+    font-size: 20px;
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .card {
+    background-color: white;
+    padding: 20px;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-header {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .card-body {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .card-used-space {
+    border-top: 3px solid #fbc658;
+  }
+  
+  .card-revenue {
+    border-top: 3px solid #6bd098;
+  }
+  
+  .card-fixed-issues {
+    border-top: 3px solid #ef8157;
+  }
+  
+  .card-followers {
+    border-top: 3px solid #51bcda;
+  }
+  
+  .daily-sales-chart {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .email-subscriptions-chart {
+    background-color: #ff9800;
+    color: white;
+  }
+  
+  .completed-tasks-chart {
+    background-color: #f44336;
+    color: white;
+  }
