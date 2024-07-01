@@ -1,64 +1,120 @@
+<!--popup success-->
+<div *ngIf="success" class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalToggleLabel">Modal 1</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  Show a second modal and hide this one with the button below.
+		</div>
+		<div class="modal-footer">
+		  <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" data-bs-dismiss="modal">Open second modal</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+	<div class="modal-dialog modal-dialog-centered">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="exampleModalToggleLabel2">Modal 2</h5>
+		  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+		  Hide this modal and show the first with the button below.
+		</div>
+		<div class="modal-footer">
+		  <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal" data-bs-dismiss="modal">Back to first</button>
+		</div>
+	  </div>
+	</div>
+  </div>
+ <!----> <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle" role="button">Open first modal</a>
+  <!--popup success end-->
+
 <div class="container">
 	<div class="screen">
-		<div class="screen__content">
-			<form class="login" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
-				<div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-          <input type="text" id="username" class="login__input" formControlName="username" placeholder="Username" required>
-				</div>
-        <div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-          <input type="text" id="adressLocation" class="login__input" formControlName="AdressLocation" placeholder="adress Location" required>          
-				</div>
-        <div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-          <input type="text" id="tel" class="login__input" formControlName="tel"  placeholder="Phone number"  required>
-				</div>
-        <div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-          <input type="email" id="email" formControlName="email" class="login__input" placeholder="Email" required>
-				</div>
-        <div class="login__field">
-					<i class="login__icon fas fa-user"></i>
-			    <input type="password" id="password" formControlName="password"  class="login__input" placeholder="Password" required>
-    
-				</div>
-				<div class="login__field">
-					<i class="login__icon fas fa-lock"></i>
-					<input type="password" id="confirmpassword" formControlName="confirmpassword" class="login__input" placeholder="Confirm Password" required>
-				</div>
-        <div class="login__field">
-          <label class="fas fa-lock" for="dateDeNaissance">Sexe :</label><br>
-					<i class="login__icon fas fa-lock"></i>
-      <select id="sexe"  class="login__input"name="sexe" required>
-          <option value="male">Homme</option>
-          <option value="female">Femme</option>
-          <!-- Ajoutez d'autres options si nécessaire -->
-      </select>
-				</div>
-        <div class="login__field">
-          <label class="fas fa-lock" for="dateDeNaissance">Date de naissance :</label>
-					<i class="login__icon fas fa-lock"></i>
-          <input type="date" id="dateDeNaissance" class="login__input"  name="dateDeNaissance" required>
-				</div>
-				<button class="button login__submit">
-					<span class="button__text">Log In Now</span>
-					<i class="button__icon fas fa-chevron-right"></i>
-				</button>				
-			</form>
-			<div class="social-login">
-				<div class="social-icons">
-					<a href="#" class="social-login__icon fab fa-instagram"></a>
-					<a href="#" class="social-login__icon fab fa-facebook"></a>
-					<a href="#" class="social-login__icon fab fa-twitter"></a>
-				</div>
+	  <div class="screen__content">
+		<form class="login needs-validation" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+		  <div class="register-container">
+			<img src="assets/img/Logo_STB.png" alt="Logo STB" class="logo">
+		  </div>
+		  <div style="display: flex;">
+			<div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['entreprisename'].invalid && (inputForm.controls['entreprisename'].dirty || inputForm.controls['entreprisename'].touched), 'is-valid': inputForm.controls['entreprisename'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="text" id="entreprisename" class="login__input_left" formControlName="entreprisename" placeholder="Nom Du L'entreprise">
+				<span class="text-danger" *ngIf="inputForm.controls['entreprisename'].dirty && inputForm.hasError('required', 'entreprisename')">* entreprise name is required</span>
+			  </div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['numcompte'].invalid && (inputForm.controls['numcompte'].dirty || inputForm.controls['numcompte'].touched), 'is-valid': inputForm.controls['numcompte'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="text" id="numcompte" class="login__input_left" formControlName="numcompte" placeholder="Numéro du compte">
+				<span class="text-danger" *ngIf="inputForm.controls['numcompte'].dirty && inputForm.hasError('required', 'numcompte')">* num compte is required</span>
+			  </div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['tel'].invalid && (inputForm.controls['tel'].dirty || inputForm.controls['tel'].touched), 'is-valid': inputForm.controls['tel'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="text" id="tel" class="login__input_left" formControlName="tel" placeholder="Phone number">
+				<span class="text-danger" *ngIf="inputForm.controls['tel'].dirty && inputForm.hasError('required', 'tel')">* Phone number is required</span>
+			  </div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['matriculeFiscale'].invalid && (inputForm.controls['matriculeFiscale'].dirty || inputForm.controls['matriculeFiscale'].touched), 'is-valid': inputForm.controls['matriculeFiscale'].valid }">
+				<i class="login__icon fas fa-lock"></i>
+				<input type="number" id="matriculeFiscale" class="login__input_left" formControlName="matriculeFiscale" placeholder="Matricule Fiscale">
+				<span class="text-danger" *ngIf="inputForm.controls['matriculeFiscale'].dirty && inputForm.hasError('required', 'matriculeFiscale')">* Matricule Fiscale is required</span>
+			  </div>
 			</div>
+			<div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['email'].invalid && (inputForm.controls['email'].dirty || inputForm.controls['email'].touched), 'is-valid': inputForm.controls['email'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="email" id="email" formControlName="email" class="login__input" placeholder="Email">
+				<span class="text-danger" *ngIf="inputForm.controls['email'].dirty && inputForm.hasError('required', 'email')">* Email is required</span>
+			  </div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['password'].invalid && (inputForm.controls['password'].dirty || inputForm.controls['password'].touched), 'is-valid': inputForm.controls['password'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="password" id="password" formControlName="password" class="login__input" placeholder="Password">
+				<span class="text-danger" *ngIf="inputForm.controls['password'].dirty && inputForm.hasError('required', 'password')">* Password is required</span>
+			  </div>
+			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['confirmpassword'].invalid && (inputForm.controls['confirmpassword'].dirty || inputForm.controls['confirmpassword'].touched), 'is-valid': inputForm.controls['confirmpassword'].valid }">
+				<i class="login__icon fas fa-lock"></i>
+				<input type="password" id="confirmpassword" formControlName="confirmpassword" class="login__input" placeholder="Confirm Password">
+				<span class="text-danger" *ngIf="inputForm.controls['confirmpassword'].dirty && inputForm.hasError('required', 'confirmpassword')">* Confirm password is required</span>
+			  </div>
+			  <div class="login__field">
+				<i class="login__icon fas fa-lock"></i>
+				<select id="libelledecompte" class="login__input" formControlName="libelledecompte">
+				  <option value="Initiateur">Initiateur</option>
+				  <option value="Validateur">Validateur</option>
+				  <option value="Consultation">Consultation</option>
+				  <option value="BancaireEtranger">Bancaire Etranger</option>
+				  <option value="SuperUtilisateur">Super Utilisateur</option>
+				  <option value="SuperValidateur">Super Validateur</option>
+				  <option value="Consultation + validation virement">Consultation + validation virement</option>
+				  <option value="Consultation + Bancaire étranger">Consultation + Bancaire étranger</option>
+				  <option value="Caissier">Caissier</option>
+				</select>
+			  </div>
+			</div>
+		  </div>
+		  <button class="button login__submit" [disabled]="!inputForm.valid">
+			<span class="button__text" style="margin-left: 55px;">Sign Up</span>
+			<i class="button__icon fas fa-chevron-right"></i>
+		  </button>
+		</form>
+		<div class="social-login">
+		  <div class="social-icons">
+			<a href="#" class="social-login__icon fab fa-instagram"></a>
+			<a href="#" class="social-login__icon fab fa-facebook"></a>
+			<a href="#" class="social-login__icon fab fa-twitter"></a>
+		  </div>
 		</div>
-		<div class="screen__background">
-			<span class="screen__background__shape screen__background__shape4"></span>
-			<span class="screen__background__shape screen__background__shape3"></span>		
-			<span class="screen__background__shape screen__background__shape2"></span>
-			<span class="screen__background__shape screen__background__shape1"></span>
-		</div>		
+	  </div>
+	  <div class="screen__background">
+		<span class="screen__background__shape screen__background__shape4"></span>
+		<span class="screen__background__shape screen__background__shape3"></span>
+		<span class="screen__background__shape screen__background__shape2"></span>
+		<span class="screen__background__shape screen__background__shape1"></span>
+	  </div>
 	</div>
-</div>
+  </div>
+  

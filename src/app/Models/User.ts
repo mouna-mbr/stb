@@ -3,8 +3,8 @@ export class User {
     email!: string;
     confirmpassword!: string;
     tel!: number;
-    adressLocation!: string;
-    username!: string;
-    sexe!: string;
-    dateDeNaissance!: Date;
+    libelledecompte!: string;
+    entreprisename!: string;
+    numcompte!: number;
+    matriculeFiscale!: number;
 }

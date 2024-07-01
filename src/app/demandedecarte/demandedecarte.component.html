@@ -1,0 +1,48 @@
+
+<body>
+    <div class="container">
+        <h1>Ecran demande de Cartes Prépayées</h1>
+        
+        <div class="form-group">
+            <label>Données du demandeur (Affichage automatique)</label>
+        </div>
+        
+        <div class="form-group">
+            <label for="nomSociete">Nom de la société</label>
+            <input type="text" id="nomSociete" name="nomSociete">
+        </div>
+
+        <div class="form-group">
+            <label for="libelleCompte">Libellé du compte</label>
+            <input type="text" id="libelleCompte" name="libelleCompte">
+        </div>
+
+        <div class="form-group">
+            <label for="numeroCompte">Numéro de compte</label>
+            <input type="text" id="numeroCompte" name="numeroCompte">
+        </div>
+
+        <div class="form-group">
+            <label for="nombreCartes">Saisi du nombre de cartes demandées</label>
+            <input type="number" id="nombreCartes" name="nombreCartes">
+        </div>
+
+        <div class="form-group">
+            <label for="commentaire">Commentaire</label>
+            <textarea id="commentaire" name="commentaire"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Affichage Fiche produit</label>
+        </div>
+
+        <div class="form-group checkbox-group">
+            <input type="checkbox" id="cgu" name="cgu" required>
+            <label for="cgu">CGU (Doit être lu et approuvé pour passer à l'enregistrement)</label>
+        </div>
+
+        <div class="submit-button">
+            <input type="submit" value="ENREGISTRER">
+        </div>
+    </div>
+</body>

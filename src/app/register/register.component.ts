@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { userservice } from '../Service/User.service'; // Assurez-vous d'importer correctement UserService
 import { User } from '../Models/User';
 
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -28,14 +30,14 @@ export class RegisterComponent implements OnInit {
 
   createForm() {
     this.inputForm = this.fb.group({
-      adressLocation: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       confirmpassword: ['', Validators.required],
       tel: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      username: ['', Validators.required],
-      sexe: [''],
-      dateDeNaissance: [''] // Assurez-vous que ce champ est également pris en compte dans le formulaire
+      entreprisename: ['', Validators.required],
+      numcompte: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      matriculeFiscale:['', [Validators.required, Validators.pattern('^[0-9]*$')]], 
+      libelledecompte:['']// Assurez-vous que ce champ est également pris en compte dans le formulaire
     });
   }
 
@@ -44,19 +46,23 @@ export class RegisterComponent implements OnInit {
       return;
     }
     const user: User = {
-      adressLocation: this.inputForm.value.adressLocation,
+      libelledecompte: this.inputForm.value.libelledecompte,
       password: this.inputForm.value.password,
       email: this.inputForm.value.email,
       confirmpassword: this.inputForm.value.confirmpassword,
       tel: this.inputForm.value.tel,
-      username: this.inputForm.value.username,
-      sexe: this.inputForm.value.sexe,
-      dateDeNaissance: this.inputForm.value.dateDeNaissance
+      entreprisename: this.inputForm.value.entreprisename,
+      numcompte: this.inputForm.value.numcompte,
+      matriculeFiscale: this.inputForm.value.matriculeFiscale
     };
 
     this.userService.addUser(user).subscribe(
       res => {
         alert("Inscription réussie !");
+        setTimeout(() => {
+          this.success = true;
+          
+        }, 2000);
         this.inputForm.reset();
         // Redirection vers la page de connexion
         this.router.navigate(['login']);
