@@ -6,5 +6,5 @@ export class User {
     libelledecompte!: string;
     entreprisename!: string;
     numcompte!: number;
-    matriculeFiscale!: number;
+    matriculeFiscale!: string;
 }

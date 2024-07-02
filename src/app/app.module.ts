@@ -10,6 +10,8 @@ import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component'; // Import HttpClientModule
 import { DemandedecarteComponent } from './demandedecarte/demandedecarte.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 export const routes: Routes = [
@@ -33,6 +35,8 @@ export const routes: Routes = [
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(), 
     HttpClientModule,
     RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })
   ],

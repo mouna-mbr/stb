@@ -1,3 +1,31 @@
+/* Styles personnalisés pour Toastr */
+::ng-deep .toast-error {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #ff3333 !important; /* Texte en rouge */
+    border: 2px solid #ff3333 !important; /* Cadre rouge */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône d'erreur */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #ff3333; /* Couleur de l'icône en rouge */
+}
+
+  
 .login__field {
 	position: relative;
   }
@@ -49,7 +77,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
-  margin-left: 335px;
+  margin-left: 320px;
 }
 
 .screen {		
@@ -88,7 +116,7 @@ body {
 	width: 920px;
 	background: #FFF;	
 	top: -135px;
-	right: 250px;	
+	right: 140px;	
 	border-radius: 0 72px 0 0;
 }
 
@@ -143,7 +171,6 @@ body {
 	padding: 10px;
 	padding-left: 14px;
 	font-weight: 700;
-	width: 90%;
 	transition: .2s;
 }
 .login__input {
@@ -151,10 +178,11 @@ body {
 	border-bottom: 2px solid #d1d1d4d1;
 	background: none;
 	padding: 10px;
-	padding-left: -14px;
+	padding-left: 14px;
 	font-weight: 700;
-	width: 95%;
 	transition: .2s;
+	margin-left: 50px;
+
 }
 
 .login__input:active,
@@ -176,7 +204,7 @@ body {
 	display: flex;
 	align-items: center;
 	width: 50%;
-	margin-left: 90px;
+	margin-left: 150px;
 	color: #0078c5;
 	box-shadow: 0px 2px 2px #0078c5;
 	cursor: pointer;
