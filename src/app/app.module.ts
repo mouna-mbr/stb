@@ -7,12 +7,16 @@ import { AdminehomeComponent } from './adminehome/adminehome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component'; // Import HttpClientModule
+import { DemandedecarteComponent } from './demandedecarte/demandedecarte.component';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
   { path: 'register', component: RegisterComponent },
+  { path: 'demande', component: DemandedecarteComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 
@@ -22,6 +26,7 @@ export const routes: Routes = [
     FormComponent,
     AdminehomeComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

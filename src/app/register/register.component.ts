@@ -7,6 +7,7 @@ import { User } from '../Models/User';
 
 
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
