@@ -1,3 +1,29 @@
+/* Styles pour Toastr Success */
+::ng-deep .toast-success {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #28a745 !important; /* Texte en vert */
+    border: 2px solid #28a745 !important; /* Cadre vert */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône de succès */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #28a745; /* Couleur de l'icône en vert */
+}
 body {
     font-family: Arial, sans-serif;
     margin: 20px;

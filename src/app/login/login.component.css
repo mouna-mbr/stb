@@ -1,6 +1,59 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+/* Styles personnalisés pour Toastr */
+::ng-deep .toast-error {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #ff3333 !important; /* Texte en rouge */
+    border: 2px solid #ff3333 !important; /* Cadre rouge */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône d'erreur */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #ff3333; /* Couleur de l'icône en rouge */
+}
+/* Styles pour Toastr Success */
+::ng-deep .toast-success {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #28a745 !important; /* Texte en vert */
+    border: 2px solid #28a745 !important; /* Cadre vert */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône de succès */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #28a745; /* Couleur de l'icône en vert */
+}
+
 .logo {
-	width: 150px;
+	width: 120px;
 	height: auto;
 	margin: 20px 0;
   }
@@ -19,7 +72,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
-    margin-left: 335px;
+    margin-left: 415px;
 
 }
 
@@ -60,8 +113,8 @@ body {
 	height: 520px;
 	width: 520px;
 	background: #FFF;	
-	top: -50px;
-	right: 120px;	
+	top: 50px;
+	right: 70px;	
 	border-radius: 0 72px 0 0;
 }
 
@@ -95,7 +148,7 @@ body {
 .login {
 	width: 320px;
 	padding: 30px;
-	padding-top: 156px;
+	padding-top: 196px;
 }
 
 .login__field {
@@ -130,7 +183,7 @@ body {
 .login__submit {
 	background: #fff;
 	font-size: 14px;
-	margin-top: 30px;
+	margin-top: 20px;
 	padding: 16px 20px;
 	border-radius: 26px;
 	border: 1px solid #D4D3E8;
@@ -138,7 +191,8 @@ body {
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 100%;
+	width: 50%;
+	margin-left: 60px;
 	border: 1px solid #007ac596;
     color: #0078c5;
 	box-shadow: 0px 2px 2px #0078c5;

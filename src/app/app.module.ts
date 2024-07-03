@@ -12,6 +12,7 @@ import { LoginComponent } from './login/login.component'; // Import HttpClientMo
 import { DemandedecarteComponent } from './demandedecarte/demandedecarte.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 export const routes: Routes = [
@@ -19,6 +20,8 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'navbar', component: NavbarComponent },
+
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 
@@ -29,6 +32,8 @@ export const routes: Routes = [
     AdminehomeComponent,
     RegisterComponent,
     LoginComponent,
+    
+    
   ],
   imports: [
     BrowserModule,

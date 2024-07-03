@@ -50,7 +50,8 @@ export class RegisterComponent implements OnInit {
 
   showSuccess(message: string) {
     const toastrOptions: Partial<IndividualConfig> = {
-      timeOut: 2000 // Durée en millisecondes (2 secondes)
+      timeOut: 2000, // Durée en millisecondes (2 secondes)
+      toastClass: 'toast-custom toast-success' // Utiliser les classes personnalisées pour le succès
     };
     this.toastr.success(message, 'Succès', toastrOptions);
   }

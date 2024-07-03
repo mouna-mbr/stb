@@ -1,23 +1,31 @@
 <div class="container">
 	<div class="screen">
 		<div class="screen__content">
-			<form class="login">
+			<form  [formGroup]="inputform" class="login">
                 <div class="register-container">
                     <img src="assets/img/Logo_STB.png" alt="Logo STB" class="logo">
                   </div>
-				<div class="login__field">
+				<div class="login__field" style="margin-top: 40px;">
 					<i class="login__icon fas fa-user"></i>
-					<input type="text" class="login__input" placeholder="User name / Email">
+					<input type="text" formControlName="email" class="login__input" placeholder="Email">
+					<span class="text-danger" *ngIf="inputform.controls['email'].dirty && inputform.hasError('required','email')">*The Password is required</span>
+
 				</div>
 				<div class="login__field">
 					<i class="login__icon fas fa-lock"></i>
-					<input type="password" class="login__input" placeholder="Password">
+					<input type="password" formControlName="password" class="login__input" placeholder="Password">
+					<span class="text-danger" *ngIf="inputform.controls['password'].dirty && inputform.hasError('required','password')">*The Password is required</span>
+
 				</div>
+				<label>
+					<input type="checkbox" checked="checked" name="remember" formControlName="rememberMe" style="margin-bottom:15px"> Remember me
+				  </label>
 				<button class="button login__submit">
-					<span class="button__text">Log In Now</span>
+					<span class="button__text" (click)="onsubmit()" style="margin-left: 20px;">Log In</span>
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>				
 			</form>
+			
 		
 		</div>
 		<div class="screen__background">

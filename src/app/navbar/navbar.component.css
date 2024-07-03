@@ -1,0 +1,54 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+body {
+    margin: 0px;
+    font-family: Titillium Web,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Arial,Lucida Grande,sans-serif;
+    
+
+}
+.badge-notification {
+    font-size: 0.65rem; /* Taille de police réduite pour le badge */
+    font-weight: bold; /* Texte en gras pour le badge */
+  }
+  
+.logo {
+	width: 150px;
+	height: auto;
+    margin-left: 20px;
+}
+  
+.content {
+    max-width: 650px;
+    margin: auto;
+}
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #76b0eb67;
+    overflow: hidden;
+    margin-bottom: 100px;
+    box-shadow: 5px 5px 5px lightgrey;
+    width: 1536px;
+    height: 60px;
+
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    color: #000;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    border-bottom: solid black 3px;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    border-bottom: solid black 3px;
+}
