@@ -27,7 +27,7 @@ export class userservice {
   }
 
   getUser(id: any) {
-    return this.httpClient.get<User>(`${this.API_URL}/get/${id}`);
+    return this.httpClient.get<User>(`${this.API_URL}/${id}`);
   }
 
   getEtudiantByCompteId(id: any) {

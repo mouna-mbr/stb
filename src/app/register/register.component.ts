@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       entreprisename: ['', Validators.required],
       numcompte: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       matriculeFiscale: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z]{13}$')]],
-      libelledecompte: ['']
+      libelledecompte: ['Initiateur', Validators.required] // Initialise la valeur par défaut
     }, {
       validator: this.checkPasswords // Validation personnalisée pour les mots de passe
     });
@@ -59,13 +59,13 @@ export class RegisterComponent implements OnInit {
   showError(message: string, title: string = 'Erreur', options?: Partial<IndividualConfig>) {
     const toastrOptions: Partial<IndividualConfig> = {
       timeOut: 2000, // Durée en millisecondes (2 secondes)
-      toastClass: 'toast-custom',
-      //iconClass: 'fas fa-exclamation-circle' // Ajoutez l'icône ici si nécessaire
+      toastClass: 'toast-custom'
     };
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
 
   onSubmit() {
+    console.log(this.inputForm.value.libelledecompte);
     if (this.inputForm.invalid) {
       this.showError('Veuillez remplir correctement tous les champs du formulaire.');
       return;
@@ -92,9 +92,7 @@ export class RegisterComponent implements OnInit {
         const existingUserMatriculeFiscale = res.find(u => u.matriculeFiscale === user.matriculeFiscale);
 
         if (existingUserEmail) {
-          this.showError('L\'email existe déjà.', 'Erreur', {
-           // iconClass: 'fas fa-exclamation-circle' // Ajoutez l'icône ici si nécessaire
-          });
+          this.showError('L\'email existe déjà.', 'Erreur', {});
         } else if (existingUserName) {
           this.showError('Le nom de l\'entreprise existe déjà.');
         } else if (existingUserTel) {
@@ -122,14 +120,14 @@ export class RegisterComponent implements OnInit {
         }
       },
       err => {
-        this.showError('Une erreur s\'est produite lors de la récupération des utilisateurs : ' + err);
+        this.showError('Une erreur s\'est produite lors de la récupération des utilisateurs : ');
       }
     );
   }
 
   onLibelleDeCompteChange(event: Event) {
     const target = event.target as HTMLSelectElement;
-    this.selectedValue = target.value;
+    this.inputForm.controls['libelledecompte'].setValue(target.value);
   }
 }
 

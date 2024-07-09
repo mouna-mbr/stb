@@ -20,7 +20,7 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'navbar', component: NavbarComponent },
+   //{ path: 'navbar', component: NavbarComponent },
 
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];

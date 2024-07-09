@@ -1,28 +1,60 @@
-
- <body>
+ <div >
+    <app-navbar></app-navbar>
+  </div>
+ <body >
  
-    <div class="container">
-        <h1>Ecran demande de Cartes Prépayées</h1>
-        
-        <div class="form-group">
-            <label>Données du demandeur (Affichage automatique)</label>
+    <div  class="container">
+        <h2>Demande de Cartes Prépayées</h2>
+       <div style="display: flex;margin-top: 20px;">
+        <div >
+          
+           <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 5px;height: 140px;width: 250px;margin-left: 200px;">
+           <div style="display: flex;"> <div>
+            <svg  xmlns="http://www.w3.org/2000/svg"     width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 21l18 0" /><path d="M5 21v-14l8 -4v18" />
+            <path d="M19 21v-10l-6 -4" /><path d="M9 9l0 .01" />
+            <path d="M9 12l0 .01" /><path d="M9 15l0 .01" />
+            <path d="M9 18l0 .01" />
+          </svg></div>
+          <div>
+          <h5 >Nom de la société</h5></div>
+          </div>
+          <h5 style="color:#0078c9 ;margin-top: 20px;margin-left: 22px;"> {{userc?.entreprisename}}</h5>
         </div>
         
-        <div class="form-group">
-            <label for="nomSociete">Nom de la société</label>
-            <input type="text" id="nomSociete" name="nomSociete">
+       </div>
+        <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 150px;height: 140px;width: 250px;margin-left: 70px;box-shadow: #0078c9;">
+          <div style="display: flex;"> <div>
+          <svg  xmlns="http://www.w3.org/2000/svg"    width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-accessible">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+            <path d="M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1" />
+            <circle cx="12" cy="7.5" r=".5" fill="currentColor" />
+          </svg></div>
+          <div>
+          <h5>Libélle du compte</h5>
         </div>
-
-        <div class="form-group">
-            <label for="libelleCompte">Libellé du compte</label>
-            <input type="text" id="libelleCompte" name="libelleCompte">
+      </div>
+      <h5 style="color:#0078c9 ;margin-top: 20px;margin-left: 22px;"> {{userc?.libelledecompte}}</h5>
         </div>
-
-        <div class="form-group">
-            <label for="numeroCompte">Numéro de compte</label>
-            <input type="text" id="numeroCompte" name="numeroCompte">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 5px;height: 140px;width: 250px;margin-left: 70px;;">
+          <div style="display: flex;"> <div>
+          <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-number">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M4 17v-10l7 10v-10" />
+            <path d="M15 17h5" />
+            <path d="M17.5 10m-2.5 0a2.5 3 0 1 0 5 0a2.5 3 0 1 0 -5 0" />
+          </svg></div>
+          
+          <h5 >   Numéro de compte</h5>
         </div>
+        <h5 style="color:#0078c9 ;margin-top: 20px;margin-left: 22px;"> {{userc?.numcompte}}</h5>
+        </div>
+      </div>
 
+</div>
+    <div style="margin-left:  80px;margin-top: 20px;width: 1320px;">
         <div class="form-group">
             <label for="nombreCartes">Saisi du nombre de cartes demandées</label>
             <input type="number" id="nombreCartes" name="nombreCartes">

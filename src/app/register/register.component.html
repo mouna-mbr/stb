@@ -47,7 +47,7 @@
 			  </div>
 			  <div class="login__field">
 				<i class="login__icon fas fa-lock"></i>
-				<select id="libelledecompte" class="login__input" (change)="onLibelleDeCompteChange($event)">
+				<select id="libelledecompte" class="login__input" formControlName="libelledecompte" (change)="onLibelleDeCompteChange($event)" required>
 				  <option value="Initiateur">Initiateur</option>
 				  <option value="Validateur">Validateur</option>
 				  <option value="Consultation">Consultation</option>
