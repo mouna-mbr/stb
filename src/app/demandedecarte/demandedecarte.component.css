@@ -1,14 +1,4 @@
-/* Styles pour Toastr Success */
-::ng-deep .toast-success {
-    background-color: #ffffff !important; /* Fond blanc */
-    color: #28a745 !important; /* Texte en vert */
-    border: 2px solid #28a745 !important; /* Cadre vert */
-    border-radius: 8px !important; /* Coins arrondis */
-    font-size: 16px !important; /* Taille de police plus grande */
-    padding: 16px !important; /* Espacement intérieur */
-    width: 400px !important; /* Largeur fixe */
-    max-width: calc(100% - 40px) !important; /* Largeur maximale */
-}
+
 .login__input {
 	border: none;
 	border-bottom: 2px solid #D1D1D4;
@@ -20,6 +10,44 @@
 	transition: .2s;
     color: black;
 }
+/* Styles personnalisés pour Toastr */
+::ng-deep .toast-error {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #ff3333 !important; /* Texte en rouge */
+    border: 2px solid #ff3333 !important; /* Cadre rouge */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône d'erreur */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #ff3333; /* Couleur de l'icône en rouge */
+}
+/* Styles pour Toastr Success */
+::ng-deep .toast-success {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #28a745 !important; /* Texte en vert */
+    border: 2px solid #28a745 !important; /* Cadre vert */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
 /* Centrer la notification */
 ::ng-deep .toast-custom {
     position: fixed !important; /* Position fixe pour centrer correctement */
@@ -34,6 +62,8 @@
     margin-right: 12px; /* Marge à droite de l'icône */
     color: #28a745; /* Couleur de l'icône en vert */
 }
+
+
 body {
     font-family: Arial, sans-serif;
     margin: 20px;
@@ -75,3 +105,30 @@ body {
     padding: 10px 20px;
     font-size: 16px;
 }
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 20px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 50%;
+	margin-left: 60px;
+	border: 1px solid #007ac596;
+    color: #0078c5;
+	box-shadow: 0px 2px 2px #0078c5;
+	cursor: pointer;
+	transition: .2s;
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	box-shadow: 0px 2px 2px #0078c5;
+	outline: none;
+}
+

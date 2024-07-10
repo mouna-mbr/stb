@@ -1,0 +1,18 @@
+.blue-underline-btn {
+    color: blue;
+    text-decoration: underline;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: large;
+  }
+  
+  .blue-underline-btn:hover {
+    text-decoration: none; /* Optionnel : pour enlever le soulignement au survol */
+  }
+  
+  button {
+    color: blue;
+    text-decoration: underline;
+  }
+  

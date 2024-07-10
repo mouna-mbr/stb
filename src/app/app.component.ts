@@ -14,7 +14,7 @@ export class AppComponent {
   success: boolean = false;
   error: boolean = false;
 
-  title = 'tableau';
+  title = 'STB';
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,

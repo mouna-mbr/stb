@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { DemandedecarteComponent } from './demandedecarte/demandedecarte.compone
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PdfGeneratorComponent } from './pdf-generator/pdf-generator.component';
 
 
 export const routes: Routes = [
@@ -34,6 +35,7 @@ export const routes: Routes = [
     LoginComponent,
     
     
+    
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,8 @@ export const routes: Routes = [
     RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA] // Ajoutez cette ligne
+
 })
 export class AppModule { }

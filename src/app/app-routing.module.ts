@@ -5,12 +5,14 @@ import { RegisterComponent } from './register/register.component'; // Assurez-vo
 import { DemandedecarteComponent } from './demandedecarte/demandedecarte.component';
 import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { PdfGeneratorComponent } from './pdf-generator/pdf-generator.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard', component: AdminehomeComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
+  {path:'pdf',component:PdfGeneratorComponent},
   { path: 'navbar', component: NavbarComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
