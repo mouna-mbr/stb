@@ -2,10 +2,13 @@
   <app-navbar></app-navbar>
 </div>
 <body>
+  <div class="all">
+
   <div class="container">
-    <h2>Demande de Cartes Prépayées</h2>
-    <div style="display: flex; margin-top: 20px;">
-      <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 200px;">
+    <br>
+    <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Demande de Cartes Prépayées</h2>
+    <div style="display: flex; margin-top: 30px;">
+      <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 100px;">
         <div style="display: flex;">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
@@ -20,13 +23,13 @@
             </svg>
           </div>
           <div>
-            <h5>Nom de la société</h5>
+            <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Nom de la société</h5>
           </div>
         </div>
-        <h5 style="color: #0078c9; margin-top: 20px; margin-left: 22px;">{{ userc?.entreprisename }}</h5>
+        <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.entreprisename }}</h5>
       </div>
 
-      <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 150px; height: 140px; width: 250px; margin-left: 70px; box-shadow: #0078c9;">
+      <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 150px; height: 140px; width: 250px; margin-left: 70px; box-shadow: #0078c9;">
         <div style="display: flex;">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-accessible">
@@ -37,13 +40,13 @@
             </svg>
           </div>
           <div>
-            <h5>Libellé du compte</h5>
+            <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Libellé du compte</h5>
           </div>
         </div>
-        <h5 style="color: #0078c9; margin-top: 20px; margin-left: 22px;">{{ userc?.libelledecompte }}</h5>
+        <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.libelledecompte }}</h5>
       </div>
 
-      <div class="shadow-lg p-3 mb-5 bg-body rounded" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 70px;">
+      <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 70px;">
         <div style="display: flex;">
           <div>
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number">
@@ -54,18 +57,19 @@
             </svg>
           </div>
           <div>
-            <h5>Numéro de compte</h5>
+            <h5 class="form-group" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Numéro de compte</h5>
           </div>
         </div>
-        <h5 style="color: #0078c9; margin-top: 20px; margin-left: 22px;">{{ userc?.numcompte }}</h5>
+        <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.numcompte }}</h5>
       </div>
+     
     </div>
   </div>
 
 
 
-    <div style="margin-left: 80px; margin-top: 20px; width: 1320px;">
-      <form class="login needs-validation" [formGroup]="inputForm" (ngSubmit)="onSubmit()" >   <div class="form-group">
+    <div style=" margin-left: 100px; width: 1120px">
+      <form class="login needs-validation" [formGroup]="inputForm" (ngSubmit)="onSubmitE()" >   <div class="form-group">
         <label for="nombreCartes">Saisir le nombre de cartes demandées</label>
         <input type="number" id="nombreCartes" formControlName="nombredescarte" class="form-control" required />
       </div>
@@ -75,18 +79,21 @@
         <textarea id="commentaire" formControlName="commentaire" class="form-control"></textarea>
       </div>
 
-      <div class="form-group">
-        <app-pdf-generator></app-pdf-generator>
-        <div style="display: flex;margin-top: 6px;">
-          <input type="checkbox" id="cgu" name="cgu" required style="width: 15px; height: 15px;" formControlName="cgu" />
-          <label for="cgu" style="margin-left: 12px;">CGU (Doit être lu et approuvé pour passer à l'enregistrement)</label>
-        </div>
-      </div>
+      <div class="form-group" style="display: flex;">
+        <label class="material-checkbox" style="margin-top: 10px;">
+          <input type="checkbox" formControlName="cgu"d="cgu" name="cgu" required >
+          <span class="checkmark" ></span>
+          CGU (Doit être lu et approuvé pour passer à l'enregistrement)
+        </label>
+        <app-pdf-generator style="margin-left: 355px;"></app-pdf-generator>
 
-      <button class="button login__submit" style="margin-left: 340px;">
-        <span class="button__text" style="margin-left: 250px;">Envoyer</span>
+      </div>
+      
+      <button class="button login__submit" >
+        <span class="button__text" style="margin-left: 20px;">Envoyer</span>
       </button>
+      <br>
       </form>
-   
     </div>
+  </div>
 </body>

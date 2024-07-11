@@ -70,7 +70,7 @@ ngOnInit(): void {
     }
   }
 
-  onSubmit() {
+  onSubmitE() {
     if (this.inputForm.invalid) {
       this.showError('Veuillez remplir correctement tous les champs du formulaire.');
       return;

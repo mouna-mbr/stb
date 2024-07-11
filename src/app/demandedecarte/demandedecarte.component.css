@@ -1,4 +1,157 @@
 
+.material-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+    cursor: pointer;
+  }
+  
+  .material-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #035587;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #0078c5;
+    border-color: #012d48;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .material-checkbox input[type="checkbox"]:focus ~ .checkmark {
+    box-shadow: 0 0 0 2px #007ac58c;
+  }
+  
+  .material-checkbox:hover input[type="checkbox"] ~ .checkmark {
+    border-color: #0078c5;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark:hover {
+    border-color: #41484d;
+  }
+  
+  /*card*/
+
+
+  .card {
+    height :150px;
+   width: 300px;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    background-image: linear-gradient(144deg,#0078c5, #0b5c8f 50%,#9fd4f5);
+  }
+  
+  .card__content {
+    background: rgb(5, 6, 45);
+    border-radius: 17px;
+    width: 100%;
+    height: 100%;
+  }
+
+
+
+
+.back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 160px;
+  height: 260%;
+  background: linear-gradient(90deg, transparent, #0078c5, #0078c5, #0078c5, #0078c5, transparent);
+  animation: rotation_481 5000ms infinite linear;
+}
+
+.back-content {
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background-color: #a8bee3;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.front {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+.front .front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #0078c5;
+  position: relative;
+  filter: blur(15px);
+  animation: floating 2600ms infinite linear;
+}
+
+
+
+/*card end*/
 .login__input {
 	border: none;
 	border-bottom: 2px solid #D1D1D4;
@@ -69,9 +222,10 @@ body {
     margin: 20px;
 }
 .container {
-    background-color: #94c6f825;
     margin-top: 27px;
-   width: 100%;
+    margin-left: 100px;
+    width: 1120px;
+   
 }
 .form-group {
     margin-bottom: 15px;
@@ -82,12 +236,12 @@ body {
     margin-bottom: 5px;
 }
 .form-group input, .form-group textarea {
-    width: 100%;
+    width: 90%;
     padding: 8px;
     box-sizing: border-box;
 }
 .form-group textarea {
-    height: 100px;
+    height: 80px;
 }
 .checkbox-group {
     display: flex;
@@ -116,13 +270,14 @@ body {
 	font-weight: 700;
 	display: flex;
 	align-items: center;
-	width: 50%;
-	margin-left: 60px;
+	margin-left: 400px;
 	border: 1px solid #007ac596;
     color: #0078c5;
 	box-shadow: 0px 2px 2px #0078c5;
 	cursor: pointer;
 	transition: .2s;
+    width: 150px;
+
 }
 
 .login__submit:active,
@@ -132,3 +287,18 @@ body {
 	outline: none;
 }
 
+.form{
+     margin-left: 300px;
+     width: 900px;
+     background-color: white;
+}
+.all{
+    width: 83%;
+    margin-top: 50px;
+    margin-left: 140px;
+    border-radius: 20px;
+    box-shadow: -5px -5px 15px 5px rgba(177, 198, 237, 0.443), 5px 5px 15px 7px rgba(177, 198, 237, 0.443);
+    
+
+
+}

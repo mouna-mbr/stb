@@ -1,1 +1,95 @@
-<p>validationinitial works!</p>
+<div>
+    <app-navbar></app-navbar>
+  </div>
+  <body>
+    <div class="all">
+    <div class="container">
+        <br>
+      <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Validation Initiale demande de Cartes Prépayées
+    </h2>
+      <div style="display: flex; margin-top: 30px;">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 100px;">
+          <div style="display: flex;">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 21l18 0" />
+                <path d="M5 21v-14l8 -4v18" />
+                <path d="M19 21v-10l-6 -4" />
+                <path d="M9 9l0 .01" />
+                <path d="M9 12l0 .01" />
+                <path d="M9 15l0 .01" />
+                <path d="M9 18l0 .01" />
+              </svg>
+            </div>
+            <div>
+              <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Nom de la société</h5>
+            </div>
+          </div>
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.entreprisename }}</h5>
+        </div>
+  
+        <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 150px; height: 140px; width: 250px; margin-left: 70px; box-shadow: #0078c9;">
+          <div style="display: flex;">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-accessible">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1" />
+                <circle cx="12" cy="7.5" r=".5" fill="currentColor" />
+              </svg>
+            </div>
+            <div>
+              <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Libellé du compte</h5>
+            </div>
+          </div>
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.libelledecompte }}</h5>
+        </div>
+  
+        <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 70px;">
+          <div style="display: flex;">
+            <div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M4 17v-10l7 10v-10" />
+                <path d="M15 17h5" />
+                <path d="M17.5 10m-2.5 0a2.5 3 0 1 0 5 0a2.5 3 0 1 0 -5 0" />
+              </svg>
+            </div>
+            <div>
+              <h5 class="form-group" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Numéro de compte</h5>
+            </div>
+          </div>
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.numcompte }}</h5>
+        </div>
+       
+      </div>
+    </div>
+  
+  
+  
+      <div style=" margin-left: 200px; width: 1120px">
+        <form class="login needs-validation"  > 
+              <div class="form-group" style="display: flex;">
+          <label for="nombreCartes" >Le nombre de cartes demandées :</label>
+          <label style="  margin-left: 12px;color: #064570">{{ userc?.numcompte }}</label>
+        </div>
+  
+        <div class="form-group" style="display: flex;">
+          <label for="commentaire">Commentaire :</label>
+          <label style="margin-left: 12px;color: #064570">{{ userc?.entreprisename }}</label>
+        </div>
+        <div style="display: flex;">
+        <button class="button valider__submit" >
+          <span class="button__text" style="margin-left: 13px;">VALIDER </span>
+        </button>
+        <button class="button refuser__submit" >
+            <span class="button__text" style="margin-left: 13px;">REJETER</span>
+          </button>
+       </div>
+        <br>
+        </form>
+      </div>
+    </div>
+  </body>
+  

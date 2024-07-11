@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PdfGeneratorComponent } from './pdf-generator/pdf-generator.component';
+import { ValidationinitialComponent } from './validationinitial/validationinitial.component';
+import { ListedemandecartesComponent } from './listedemandecartes/listedemandecartes.component';
 
 
 export const routes: Routes = [
@@ -21,8 +23,8 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
-   //{ path: 'navbar', component: NavbarComponent },
-
+  { path: 'validationi', component: ValidationinitialComponent },
+  { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 
