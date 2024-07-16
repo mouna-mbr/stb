@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PdfGeneratorComponent } from './pdf-generator/pdf-generator.component';
 import { ValidationinitialComponent } from './validationinitial/validationinitial.component';
 import { ListedemandecartesComponent } from './listedemandecartes/listedemandecartes.component';
+import { ValidationfinalComponent } from './validationfinal/validationfinal.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'pdf',component:PdfGeneratorComponent},
   { path: 'navbar', component: NavbarComponent },
   { path: 'validationi/:id', component: ValidationinitialComponent },
+  { path: 'validationf/:id', component: ValidationfinalComponent },
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];

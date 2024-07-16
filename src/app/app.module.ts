@@ -16,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PdfGeneratorComponent } from './pdf-generator/pdf-generator.component';
 import { ValidationinitialComponent } from './validationinitial/validationinitial.component';
 import { ListedemandecartesComponent } from './listedemandecartes/listedemandecartes.component';
+import { ValidationfinalComponent } from './validationfinal/validationfinal.component';
 
 
 export const routes: Routes = [
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
   { path: 'validationi/:id', component: ValidationinitialComponent },
+  { path: 'validationf/:id', component: ValidationfinalComponent },
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];

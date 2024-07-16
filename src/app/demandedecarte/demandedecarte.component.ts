@@ -55,15 +55,15 @@ export class DemandedecarteComponent implements OnInit {
   }
 
 ngOnInit(): void {
-    console.log(this.iduserco);
+    //console.log(this.iduserco);
 
     this.createForm();
     this.iduserco = localStorage.getItem('id')!;
     if (this.iduserco) {
       this.userService.getUser(this.iduserco).subscribe(user => {
         this.userc = user;
-        console.log(this.userc.entreprisename);
-        console.log(this.userc.libelledecompte);
+      //  console.log(this.userc.entreprisename);
+       // console.log(this.userc.libelledecompte);
 
 
       });
@@ -82,8 +82,8 @@ ngOnInit(): void {
       commentaire: this.inputForm.value.commentaire,
       validationI: false,
       validationF: false,
-      statut:"En Attente"
-
+      statut:"En Attente",
+      time: new Date(),
     };
 
     this.demandecarteService.addDemandeCarte(demandeCarte).subscribe(

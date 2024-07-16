@@ -8,20 +8,20 @@
         </div>
    <div class="radio-inputs">
        <label class="radio">
-         <input type="radio" name="radio" checked="" />
+         <input type="radio" name="radio" checked="" (click)="loadDemandeCartes()"/>
          <span class="name">TOUT</span>
        </label>
        <label class="radio">
-         <input type="radio" name="radio" />
+         <input type="radio" name="radio" (click)="loadDemandeCartestoday()" />
          <span class="name">Aujourd'hui</span>
        </label>
      
        <label class="radio">
-         <input type="radio" name="radio" />
+         <input type="radio" name="radio" (click)="loadDemandeCarteslastday()" />
          <span class="name">Hier</span>
        </label>
        <label class="radio">
-        <input type="radio" name="radio" />
+        <input type="radio" name="radio" (click)="loadDemandeCarteslastday()"  />
         <span class="name">Cette semaine</span>
       </label>
      </div>

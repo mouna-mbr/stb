@@ -1,0 +1,399 @@
+
+.material-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+    cursor: pointer;
+  }
+  
+  .material-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #035587;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #0078c5;
+    border-color: #012d48;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .material-checkbox input[type="checkbox"]:focus ~ .checkmark {
+    box-shadow: 0 0 0 2px #007ac58c;
+  }
+  
+  .material-checkbox:hover input[type="checkbox"] ~ .checkmark {
+    border-color: #0078c5;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark:hover {
+    border-color: #41484d;
+  }
+  
+  /*card*/
+
+
+  .card {
+    height :150px;
+   width: 300px;
+    border-radius: 20px;
+    padding: 5px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    background-image: linear-gradient(144deg,#0078c5, #0b5c8f 50%,#9fd4f5);
+  }
+  
+  .card__content {
+    background: rgb(5, 6, 45);
+    border-radius: 17px;
+    width: 100%;
+    height: 100%;
+  }
+
+
+
+
+.back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 160px;
+  height: 260%;
+  background: linear-gradient(90deg, transparent, #0078c5, #0078c5, #0078c5, #0078c5, transparent);
+  animation: rotation_481 5000ms infinite linear;
+}
+
+.back-content {
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background-color: #a8bee3;
+  border-radius: 5px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.card:hover .content {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.front {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+.front .front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #0078c5;
+  position: relative;
+  filter: blur(15px);
+  animation: floating 2600ms infinite linear;
+}
+
+
+
+/*card end*/
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 100%;
+	transition: .2s;
+    color: black;
+}
+/* Styles personnalisés pour Toastr */
+::ng-deep .toast-error {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #ff3333 !important; /* Texte en rouge */
+    border: 2px solid #ff3333 !important; /* Cadre rouge */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône d'erreur */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #ff3333; /* Couleur de l'icône en rouge */
+}
+/* Styles pour Toastr Success */
+::ng-deep .toast-success {
+    background-color: #ffffff !important; /* Fond blanc */
+    color: #28a745 !important; /* Texte en vert */
+    border: 2px solid #28a745 !important; /* Cadre vert */
+    border-radius: 8px !important; /* Coins arrondis */
+    font-size: 16px !important; /* Taille de police plus grande */
+    padding: 16px !important; /* Espacement intérieur */
+    width: 400px !important; /* Largeur fixe */
+    max-width: calc(100% - 40px) !important; /* Largeur maximale */
+}
+
+/* Centrer la notification */
+::ng-deep .toast-custom {
+    position: fixed !important; /* Position fixe pour centrer correctement */
+    top: 50% !important; /* Ajuster la position verticale au centre */
+    left: 50% !important; /* Ajuster la position horizontale au centre */
+    transform: translate(-50%, -50%) !important; /* Centrer parfaitement */
+}
+
+/* Style de l'icône de succès */
+::ng-deep .toast-custom .toast-icon {
+    font-size: 24px; /* Taille de l'icône */
+    margin-right: 12px; /* Marge à droite de l'icône */
+    color: #28a745; /* Couleur de l'icône en vert */
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.container {
+    margin-top: 27px;
+    margin-left: 100px;
+    width: 1120px;
+   
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.form-group textarea {
+    height: 100px;
+}
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+.checkbox-group input {
+    margin-right: 10px;
+}
+.submit-button {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.submit-button input {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 20px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	margin-left: 400px;
+	border: 1px solid #007ac596;
+    color: #0078c5;
+	box-shadow: 0px 2px 2px #0078c5;
+	cursor: pointer;
+	transition: .2s;
+    width: 150px;
+
+}
+
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+	box-shadow: 0px 2px 2px #0078c5;
+	outline: none;
+}
+
+.form{
+     margin-left: 300px;
+     width: 900px;
+     background-color: white;
+}
+.all{
+    width: 83%;
+    margin-top: 80px;
+    margin-left: 150px;
+    border-radius: 20px;
+    box-shadow: -5px -5px 15px 5px rgba(177, 198, 237, 0.443), 5px 5px 15px 7px rgba(177, 198, 237, 0.443);
+    
+
+
+}
+.refuser__submit {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #007ac596;
+    background: #fff;
+	font-size: 14px;
+	margin-top: 20px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	border: 1px solid #007ac596;
+    color: #0078c5;
+	box-shadow: 0px 2px 2px #0078c5;
+	cursor: pointer;
+	transition: .2s;
+    width: 150px;
+    margin-left: 30px;
+
+
+  }
+  
+  .refuser__submit:hover {
+    background-color: #c42323;
+    box-shadow: 0px 15px 20px #c423235f;
+    color: #fff;
+    transform: translateY(-7px);
+    border: 1px solid #c42323;
+
+  }
+  
+  .refuser__submit:active {
+    transform: translateY(-1px);
+  }
+  .valider__submit {
+    margin-left: 230px;
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    border: 1px solid #007ac596;
+    background: #fff;
+	font-size: 14px;
+	margin-top: 20px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	border: 1px solid #007ac596;
+    color: #0078c5;
+	box-shadow: 0px 2px 2px #0078c5;
+	cursor: pointer;
+	transition: .2s;
+    width: 150px;
+
+  }
+  
+  .valider__submit:hover {
+    background-color: #2ba137;
+    box-shadow: 0px 15px 20px #2ba1378b;
+    color: #fff;
+    transform: translateY(-7px);
+    border: 1px solid #2ba137;
+
+  }
+  
+  .valider__submit:active {
+    transform: translateY(-1px);
+  }
