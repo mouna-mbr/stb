@@ -72,20 +72,21 @@
         <form class="login needs-validation"  > 
               <div class="form-group" style="display: flex;">
           <label for="nombreCartes" >Le nombre de cartes demandées :</label>
-          <label style="  margin-left: 12px;color: #064570">{{ userc?.numcompte }}</label>
+          <label style="  margin-left: 12px;color: #064570">{{ ledemande?.nombredescarte }}</label>
         </div>
   
         <div class="form-group" style="display: flex;">
           <label for="commentaire">Commentaire :</label>
-          <label style="margin-left: 12px;color: #064570">{{ userc?.entreprisename }}</label>
+          <label style="margin-left: 12px;color: #064570">{{ ledemande?.commentaire }}</label>
         </div>
         <div style="display: flex;">
-        <button class="button valider__submit" >
+        <a class="button valider__submit"  (click)=" onAccept()">
           <span class="button__text" style="margin-left: 13px;">VALIDER </span>
-        </button>
-        <button class="button refuser__submit" >
-            <span class="button__text" style="margin-left: 13px;">REJETER</span>
-          </button>
+        </a>
+        <a class="button refuser__submit" (click)="onRefus()">
+            <span class="button__text" style="margin-left: 13px;" >REJETER</span>
+        </a>
+         
        </div>
         <br>
         </form>

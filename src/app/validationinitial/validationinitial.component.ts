@@ -1,30 +1,34 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { PdfGeneratorComponent } from '../pdf-generator/pdf-generator.component';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { userservice } from '../Service/User.service';
 import { DemandecartesService } from '../Service/DemandecartesService.service';
+import { Demandecartes } from '../Models/Demandecartes';
 
 @Component({
   selector: 'app-validationinitial',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent,ReactiveFormsModule],
+  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent, ReactiveFormsModule],
   templateUrl: './validationinitial.component.html',
-  styleUrl: './validationinitial.component.css'
+  styleUrls: ['./validationinitial.component.css']
 })
-export class ValidationinitialComponent {
+export class ValidationinitialComponent implements OnInit {
   userc: any;
-  iduserco = localStorage.getItem('id')!;
+  iduserco:any;
   inputForm!: FormGroup;
+  iddemande: any;
+  ledemande!: Demandecartes;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private userService:userservice,
+    private userService: userservice,
+    private actRoute: ActivatedRoute,
     private demandecarteService: DemandecartesService // Renommé pour suivre la convention de nommage
   ) {}
 
@@ -52,23 +56,64 @@ export class ValidationinitialComponent {
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
 
-ngOnInit(): void {
-    console.log(this.iduserco);
-
+  ngOnInit(): void {
     this.createForm();
-    this.iduserco = localStorage.getItem('id')!;
-    if (this.iduserco) {
-      this.userService.getUser(this.iduserco).subscribe(user => {
-        this.userc = user;
-        console.log(this.userc.entreprisename);
-        console.log(this.userc.libelledecompte);
+ 
+    this.actRoute.params.subscribe(
+      (param) => {
+        this.iddemande = param['id'];
+        //console.log(this.iddemande);
+        this.demandecarteService.getDemandeCarte(this.iddemande).subscribe(
+          (demande) => {
+            this.ledemande = demande;
+            this.iduserco = this.ledemande.idUser;
+           // console.log(this.iduserco)
+            if (this.iduserco) {
+              this.userService.getUser(this.iduserco).subscribe(
+                (user) => {
+                  this.userc = user;
+                 // console.log(this.userc.entreprisename);
+                 // console.log(this.userc.libelledecompte);
+                },
+                (err) => {
+                  console.error(err);
+                }
+              );
+            }
+          },
+          (err) => {
+            this.showError('Erreur lors de la récupération de la demande.');
+          }
+        );
+      }
+    );
+  }
+
+ 
+  onAccept(): void {
+
+    this.demandecarteService.getDemandeCarte(this.iddemande).subscribe(demande => {
+      demande.statut = 'Acceptée Dans La Validation Initiale '; 
+      demande.validationI = true;
+      console.log(demande);
 
 
+      this.demandecarteService.editDemandeCarte(this.iddemande, demande).subscribe(() => {
+        this.router.navigate(["listedesdemandes"]);
+        console.log(demande);
       });
-    }
+    });
   }
-  onaccept():void{
-    
-  }
+  onRefus(): void {
+    this.demandecarteService.getDemandeCarte(this.iddemande).subscribe(demande => {
+      demande.statut = 'Refusée dans la validation initiale'; 
+      demande.validationI = true;
+      console.log(demande);
 
+      this.demandecarteService.editDemandeCarte(this.iddemande, demande).subscribe(() => {
+        this.router.navigate(["listedesdemandes"]);
+        console.log(demande);
+      });
+    });
+  }
 }

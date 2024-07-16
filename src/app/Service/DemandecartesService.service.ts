@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Demandecartes } from '../Models/Demandecartes';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class DemandecartesService {
   getAllDemandeCarte() {
     return this.httpClient.get<any>(`${this.API_URL}/all`);
   }
+ 
 
   addDemandeCarte(demandedecartes: any) {
     return this.httpClient.post(`${this.API_URL}/add`, demandedecartes);

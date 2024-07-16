@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DemandecartesService } from '../Service/DemandecartesService.service'; // Renommé pour suivre la convention de nommage
-import { Demandecartes } from '../Models/Demandecartes';
+import {  Demandecarteswithoutid } from '../Models/Demandecartes';
 import { userservice } from '../Service/User.service';
 
 @Component({
@@ -76,12 +76,14 @@ ngOnInit(): void {
       return;
     }
 
-    const demandeCarte: Demandecartes = {
+    const demandeCarte:  Demandecarteswithoutid = {
       nombredescarte: this.inputForm.value.nombredescarte,
       idUser: this.iduserco, // Assurez-vous que l'ID de l'utilisateur est un nombre
       commentaire: this.inputForm.value.commentaire,
       validationI: false,
-      validationF: false
+      validationF: false,
+      statut:"En Attente"
+
     };
 
     this.demandecarteService.addDemandeCarte(demandeCarte).subscribe(

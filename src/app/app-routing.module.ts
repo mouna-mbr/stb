@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   {path:'pdf',component:PdfGeneratorComponent},
   { path: 'navbar', component: NavbarComponent },
-  { path: 'validationi', component: ValidationinitialComponent },
+  { path: 'validationi/:id', component: ValidationinitialComponent },
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
