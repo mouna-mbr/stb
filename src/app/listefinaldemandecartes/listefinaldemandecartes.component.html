@@ -1,1 +1,56 @@
-<p>listefinaldemandecartes works!</p>
+<div>
+    <app-navbar></app-navbar>
+  </div>
+  <body>
+    <div class="all">
+    <div style="margin-top: 30px;">   
+        <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Liste finale des demandes de cartes prépayées</h2>
+        </div>
+   <div class="radio-inputs">
+       <label class="radio">
+         <input type="radio" name="radio" checked="" (click)="loadDemandeCartes()"/>
+         <span class="name">TOUT</span>
+       </label>
+       <label class="radio">
+         <input type="radio" name="radio" (click)="loadDemandeCartestoday()" />
+         <span class="name">Aujourd'hui</span>
+       </label>
+     
+       <label class="radio">
+         <input type="radio" name="radio" (click)="loadDemandeCarteslastday()" />
+         <span class="name">Hier</span>
+       </label>
+       <label class="radio">
+        <input type="radio" name="radio" (click)="loadDemandeCarteslastday()"  />
+        <span class="name">Cette semaine</span>
+      </label>
+     </div>
+     <div class="container">
+        <div><br>
+             <table class="table table table-striped " >
+            <thead>
+              <tr style="height: 60px; ">
+                <th scope="col"></th>
+                <th scope="col" style="color: #0567a4">Nom de la société</th>
+                <th scope="col" style="color: #0567a4">Numéro de compte</th>
+                <th scope="col" style="color: #0567a4"> Nombre de cartes demandées</th>
+                <th scope="col" style="color: #0567a4"> Détails</th>
+
+              </tr>
+            </thead>
+            <tbody>
+         
+                <tr *ngFor="let usr of listDemandeCartes; let i = index">
+                    <th scope="row" style="color: #0567a4">{{ i + 1 }}</th>
+                    <td>{{ usr.user?.entreprisename }}</td>
+                    <td>{{ usr.user?.numcompte }}</td>
+                    <td >{{ usr.nombredescarte }}</td>
+                    <td><a (click)="getDemande(usr.idCarte)" style="color: #0078c5; text-decoration: underline;">Plus...</a></td>
+                  </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+     </div>
+     </div>
+  </body>

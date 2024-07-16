@@ -38,7 +38,12 @@ export class ListedemandecartesComponent implements OnInit {
   loadDemandeCartes(): void {
     this.demandeService.getAllDemandeCarte().subscribe(
       (res) => {
-        this.listDemandeCartes = res;
+        this.listDemandeCartes = res.filter((demande: Demandecartes) => 
+          demande.validationI === false 
+        
+        );
+
+        // Charger les utilisateurs pour chaque demande
         this.listDemandeCartes.forEach(demande => {
           this.userService.getUser(demande.idUser).subscribe(
             (user) => {
@@ -49,13 +54,13 @@ export class ListedemandecartesComponent implements OnInit {
             }
           );
         });
-       // console.log(this.listDemandeCartes);
       },
       (err) => {
         console.error('Error fetching demande cartes:', err);
       }
     );
   }
+ 
   loadDemandeCartestoday(): void {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
@@ -65,7 +70,8 @@ export class ListedemandecartesComponent implements OnInit {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
           demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
-          return demandeDate.getTime() === today.getTime();
+          return demande.validationI === false &&
+                 demandeDate.getTime() === today.getTime();
         });
 
         // Charger les utilisateurs pour chaque demande
@@ -97,7 +103,7 @@ export class ListedemandecartesComponent implements OnInit {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
           demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
-          return demandeDate.getTime() === yesterday.getTime();
+          return demande.validationI === false &&demandeDate.getTime() === yesterday.getTime();
         });
 
         // Charger les utilisateurs pour chaque demande
@@ -129,7 +135,7 @@ export class ListedemandecartesComponent implements OnInit {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
           demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
-          return demandeDate >= startOfWeek && demandeDate <= today;
+          return demande.validationI === false && demandeDate >= startOfWeek && demandeDate <= today;
         });
 
         // Charger les utilisateurs pour chaque demande
