@@ -18,6 +18,7 @@ import { ValidationinitialComponent } from './validationinitial/validationinitia
 import { ListedemandecartesComponent } from './listedemandecartes/listedemandecartes.component';
 import { ValidationfinalComponent } from './validationfinal/validationfinal.component';
 import { ListefinaldemandecartesComponent } from './listefinaldemandecartes/listefinaldemandecartes.component';
+import { SuiviedemandeComponent } from './suiviedemande/suiviedemande.component';
 
 
 export const routes: Routes = [
@@ -29,6 +30,7 @@ export const routes: Routes = [
   { path: 'validationf/:id', component: ValidationfinalComponent },
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: 'listefianldesdemandes', component: ListefinaldemandecartesComponent },
+  { path: 'suividemandes', component: SuiviedemandeComponent },
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 

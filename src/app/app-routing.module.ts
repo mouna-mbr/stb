@@ -10,6 +10,7 @@ import { ValidationinitialComponent } from './validationinitial/validationinitia
 import { ListedemandecartesComponent } from './listedemandecartes/listedemandecartes.component';
 import { ValidationfinalComponent } from './validationfinal/validationfinal.component';
 import { ListefinaldemandecartesComponent } from './listefinaldemandecartes/listefinaldemandecartes.component';
+import { SuiviedemandeComponent } from './suiviedemande/suiviedemande.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'validationf/:id', component: ValidationfinalComponent },
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: 'listefianldesdemandes', component: ListefinaldemandecartesComponent },
-
+  { path: 'suividemandes', component: SuiviedemandeComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
 

@@ -103,6 +103,7 @@ export class ValidationfinalComponent implements OnInit {
         console.log(demande);
       });
     });
+    
   }
   onRefus(): void {
     this.demandecarteService.getDemandeCarte(this.iddemande).subscribe(demande => {
