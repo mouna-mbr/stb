@@ -59,7 +59,6 @@ export class LoginComponent implements OnInit {
   }
 
   onsubmit() {
-    console.log(this.inputform);
     this.userService.getAllUsers().subscribe(res => {
       if (res == null) {
         this.showError("User not found!!");
@@ -74,7 +73,7 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('rememberedEmail');
           }
           localStorage.setItem('id', user.idUser);
-          this.router.navigate(['demande']);
+          this.router.navigate(['home']);
           this.showSuccess("Vous êtes connecté.");
         } else {
           this.showError("User not found!!");

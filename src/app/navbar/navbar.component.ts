@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { DemandecartesService } from '../Service/DemandecartesService.service';
 import { map } from 'rxjs/operators';
 import { Demandecartes } from '../Models/Demandecartes';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -13,18 +14,20 @@ import { Demandecartes } from '../Models/Demandecartes';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css',
   standalone: true,
-  imports: [NavbarComponent]
+  imports: [NavbarComponent,CommonModule]
 
 })
 export class NavbarComponent implements OnInit {
   count!: number;
-
+  isconnected: boolean = false;
   ngOnInit(): void {
     this.getCountOfDemandesWithValidationIFalse().subscribe(
       count => this.count = count,
       error => console.error('Error fetching count:', error)
     );
-  
+    this.isconnected = localStorage.getItem('id') !== null;
+
+  console.log(this.isconnected)
 
   }
   constructor(private fb: FormBuilder,private route:Router , private actRoute:ActivatedRoute,private demandeservice: DemandecartesService){}
@@ -40,6 +43,10 @@ export class NavbarComponent implements OnInit {
       map(demandes => demandes.filter((demande: Demandecartes) => !demande.validationI).length)
     );
   }
+  register(){
+    this.route.navigate(["register"]);
+  }
 }  
+
 
 

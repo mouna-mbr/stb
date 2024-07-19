@@ -5,6 +5,7 @@ import { userservice } from '../Service/User.service'; // Assurez-vous d'importe
 import { User } from '../Models/User';
 
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
+import { group } from '@angular/animations';
 
 @Component({
   selector: 'app-register',
@@ -16,6 +17,7 @@ export class RegisterComponent implements OnInit {
   inputForm!: FormGroup;
   success = false;
   selectedValue: string = 'libelle';
+  check!:boolean;
 
   constructor(
     private fb: FormBuilder,
@@ -26,6 +28,13 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
+    this.checkGroupStatus();
+
+  }
+  checkGroupStatus(): void {
+    this.inputForm?.get('group')?.valueChanges.subscribe((isChecked: boolean) => {
+      this.check = isChecked;
+    });
   }
 
   createForm() {
@@ -37,6 +46,8 @@ export class RegisterComponent implements OnInit {
       entreprisename: ['', Validators.required],
       numcompte: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       matriculeFiscale: ['', [Validators.required, Validators.pattern('^[0-9A-Za-z]{13}$')]],
+      group: [false],
+      entreprisenumber:['1'],
       libelledecompte: ['Initiateur', Validators.required] // Initialise la valeur par défaut
     }, {
       validator: this.checkPasswords // Validation personnalisée pour les mots de passe
@@ -66,7 +77,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.inputForm.value.libelledecompte);
     if (this.inputForm.invalid) {
       this.showError('Veuillez remplir correctement tous les champs du formulaire.');
       return;
@@ -80,7 +90,10 @@ export class RegisterComponent implements OnInit {
       tel: this.inputForm.value.tel,
       entreprisename: this.inputForm.value.entreprisename,
       numcompte: this.inputForm.value.numcompte,
-      matriculeFiscale: this.inputForm.value.matriculeFiscale
+      matriculeFiscale: this.inputForm.value.matriculeFiscale,
+      role:"RH",
+      isagroup:this.check,
+      nbentreprise:this.inputForm.value.entreprisenumber,
     };
 
     this.userService.getAllUsers().subscribe(

@@ -7,4 +7,7 @@ export class User {
     entreprisename!: string;
     numcompte!: number;
     matriculeFiscale!: string;
+    role!:string;
+    isagroup!:boolean;
+    nbentreprise!:number;
 }

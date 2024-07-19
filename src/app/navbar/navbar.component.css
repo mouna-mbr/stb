@@ -54,3 +54,35 @@ body {
 .topnav a.active {
     border-bottom: solid #064570 3px;
 }
+/*btn s'inscrire*/
+button {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background:  white;
+    font-size: 18px;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+    will-change: box-shadow,transform;
+    box-shadow: 0px 0.01em 0.01em rgb(45 35 66 / 40%), 0px 0.2em 0.4em -0.01em rgb(45 35 66 / 30%), inset 0px -0.01em 0px rgb(58 65 111 / 50%);
+    padding: 0 2em;
+    border-radius: 20px;
+    color: #064570;
+    height: 2.6em;
+    text-shadow: 0 1px 0 linear-gradient(to top, #035587 , white);
+    transition: box-shadow 0.15s ease, transform 0.15s ease;
+    margin-top: 10px;
+    height: 42px;
+    margin-left:785px ;
+    margin-right: 60px;
+  }
+  
+  button:hover {
+    box-shadow: 0px 0.1em 0.2em rgb(45 35 66 / 40%), 0px 0.4em 0.7em -0.1em rgb(45 35 66 / 30%), inset 0px -0.1em 0px linear-gradient(to top, #035587 , white);
+    transform: translateY(-0.1em);
+  }
+  
+  button:active {
+    box-shadow: inset 0px 0.1em 0.6em linear-gradient(to top, #035587 , white);
+    transform: translateY(0em);
+  }

@@ -92,6 +92,7 @@ ngOnInit(): void {
         setTimeout(() => {
           this.inputForm.reset();
         }, 2000);
+        this.router.navigate(['home']);
       },
       err => {
         this.showError('Une erreur s\'est produite lors de la demande.');

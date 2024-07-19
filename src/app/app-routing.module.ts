@@ -11,9 +11,10 @@ import { ListedemandecartesComponent } from './listedemandecartes/listedemandeca
 import { ValidationfinalComponent } from './validationfinal/validationfinal.component';
 import { ListefinaldemandecartesComponent } from './listefinaldemandecartes/listefinaldemandecartes.component';
 import { SuiviedemandeComponent } from './suiviedemande/suiviedemande.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'dashboard', component: AdminehomeComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'listedesdemandes', component: ListedemandecartesComponent },
   { path: 'listefianldesdemandes', component: ListefinaldemandecartesComponent },
   { path: 'suividemandes', component: SuiviedemandeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
 

@@ -110,7 +110,7 @@ body {
 .screen {		
 	background: linear-gradient(90deg, #0078c5, #cfe3ef);		
 	position: relative;	
-	height: 600px;
+	height: 620px;
 	width: 660px;	
 	box-shadow: 0px 0px 24px #007ac5c0;
 }
@@ -222,7 +222,6 @@ body {
 .login__submit {
 	background: #fff;
 	font-size: 14px;
-	margin-top: 30px;
 	padding: 16px 20px;
 	border-radius: 26px;
 	border: 1px solid #007ac596;
@@ -277,3 +276,63 @@ body {
 .social-login__icon:hover {
 	transform: scale(1.5);	
 }
+/*check box */
+.material-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #777777;
+    cursor: pointer;
+  }
+  
+  .material-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #035587;
+    border-radius: 4px;
+    transition: all 0.3s;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #0078c5;
+    border-color: #012d48;
+  }
+  
+  .material-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+  
+  .material-checkbox input[type="checkbox"]:focus ~ .checkmark {
+    box-shadow: 0 0 0 2px #007ac58c;
+  }
+  
+  .material-checkbox:hover input[type="checkbox"] ~ .checkmark {
+    border-color: #0078c5;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .material-checkbox input[type="checkbox"]:disabled ~ .checkmark:hover {
+    border-color: #41484d;
+  }

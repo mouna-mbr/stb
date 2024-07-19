@@ -25,9 +25,14 @@
 			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['matriculeFiscale'].invalid && (inputForm.controls['matriculeFiscale'].dirty || inputForm.controls['matriculeFiscale'].touched), 'is-valid': inputForm.controls['matriculeFiscale'].valid }">
 				<i class="login__icon fas fa-lock"></i>
 				<input type="text" id="matriculeFiscale" class="login__input_left" formControlName="matriculeFiscale" placeholder="Matricule Fiscale">
-				<span class="text-danger" *ngIf="!inputForm.controls['matriculeFiscale'].dirty && inputForm.hasError('required', 'matriculeFiscale')">*is required</span>
 				<span class="text-danger" *ngIf="inputForm.controls['matriculeFiscale'].dirty && inputForm.hasError('required', 'matriculeFiscale')">* Matricule Fiscale is required</span>
 			  </div>
+			  <div class="form-group" style="display: flex;	margin-top: 20px;	font-weight: 700;">
+				<label class="material-checkbox" >
+				  <input type="checkbox" formControlName="group" d="cgu" name="cgu"  >
+				  <span class="checkmark" >
+				</span>Un Group d'entreprise	</label>
+			  </div><br>
 			</div>
 			<div>
 			  <div class="login__field" [ngClass]="{ 'is-invalid': inputForm.controls['email'].invalid && (inputForm.controls['email'].dirty || inputForm.controls['email'].touched), 'is-valid': inputForm.controls['email'].valid }">
@@ -59,13 +64,19 @@
 				  <option value="Caissier">Caissier</option>
 				</select>
 			  </div>
+			  <div *ngIf="check" class="login__field" style="margin-top: -10px;" [ngClass]="{ 'is-invalid': inputForm.controls['entreprisenumber'].invalid && (inputForm.controls['entreprisenumber'].dirty || inputForm.controls['entreprisenumber'].touched), 'is-valid': inputForm.controls['entreprisenumber'].valid }">
+				<i class="login__icon fas fa-user"></i>
+				<input type="number" id="entreprisenumber" formControlName="entreprisenumber" class="login__input" placeholder="Nombre d'entreprise">
+				<span class="text-danger" *ngIf="inputForm.controls['entreprisenumber'].dirty && inputForm.hasError('required', 'entreprisenumber')">* is required</span>
+			  </div>
 			</div>
 		  </div>
 		  <button class="button login__submit" [disabled]="!inputForm.valid">
 			<span class="button__text" style="margin-left: 55px;">Sign Up</span>
 			<i class="button__icon fas fa-chevron-right"></i>
 		  </button>
-		</form>
+		</form>		  <br>
+
 		
 	  </div>
 	  <div class="screen__background">
