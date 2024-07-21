@@ -20,6 +20,8 @@ import { ValidationfinalComponent } from './validationfinal/validationfinal.comp
 import { ListefinaldemandecartesComponent } from './listefinaldemandecartes/listefinaldemandecartes.component';
 import { SuiviedemandeComponent } from './suiviedemande/suiviedemande.component';
 import { HomeComponent } from './home/home.component';
+import { DelevranceunitaireComponent } from './delevranceunitaire/delevranceunitaire.component';
+import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/listedelevranceunitairei.component';
 
 
 export const routes: Routes = [
@@ -33,6 +35,10 @@ export const routes: Routes = [
   { path: 'listefianldesdemandes', component: ListefinaldemandecartesComponent },
   { path: 'suividemandes', component: SuiviedemandeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'carteunitaire/:id', component: DelevranceunitaireComponent },
+  { path: 'listeIdelevanceU', component: ListedelevranceunitaireiComponent },
+
+
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 

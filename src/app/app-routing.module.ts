@@ -12,6 +12,8 @@ import { ValidationfinalComponent } from './validationfinal/validationfinal.comp
 import { ListefinaldemandecartesComponent } from './listefinaldemandecartes/listefinaldemandecartes.component';
 import { SuiviedemandeComponent } from './suiviedemande/suiviedemande.component';
 import { HomeComponent } from './home/home.component';
+import { DelevranceunitaireComponent } from './delevranceunitaire/delevranceunitaire.component';
+import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/listedelevranceunitairei.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'listefianldesdemandes', component: ListefinaldemandecartesComponent },
   { path: 'suividemandes', component: SuiviedemandeComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'carteunitaire/:id', component: DelevranceunitaireComponent },
+  { path: 'listeIdelevanceU', component: ListedelevranceunitaireiComponent },
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
 
