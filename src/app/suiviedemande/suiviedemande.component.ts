@@ -184,7 +184,7 @@ loadDemandeCartes(): void {
               }
             } else { 
               if(res.statut==="Acceptée Dans La Validation Final "){
-                this.router.navigate(['validationi', idDemande]);
+                this.router.navigate(['carteenmasse',idDemande]);
               }else{
                 this.showError("Votre demande n'est pas encore validée !");
               }

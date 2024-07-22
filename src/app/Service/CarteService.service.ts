@@ -30,5 +30,6 @@ export class CarteService {
   getCarte(id: any) {
     return this.httpClient.get<Cartes>(`${this.API_URL}/${id}`);
   }
+  
  
 }

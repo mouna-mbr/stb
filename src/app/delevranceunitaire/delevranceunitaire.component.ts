@@ -1,13 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { User } from '../Models/User';
 import { PdfGeneratorComponent } from '../pdf-generator/pdf-generator.component';
 import { AbstractControl, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DemandecartesService } from '../Service/DemandecartesService.service'; // Renommé pour suivre la convention de nommage
-import {  Demandecarteswithoutid } from '../Models/Demandecartes';
 import { userservice } from '../Service/User.service';
 import { Cartes } from '../Models/Cartes';
 import { CarteService } from '../Service/CarteService.service';
@@ -15,22 +12,23 @@ import { CarteService } from '../Service/CarteService.service';
 @Component({
   selector: 'app-delevranceunitaire',
   standalone: true,
-  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent,ReactiveFormsModule],
+  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent, ReactiveFormsModule],
   templateUrl: './delevranceunitaire.component.html',
-  styleUrl: './delevranceunitaire.component.css'
+  styleUrls: ['./delevranceunitaire.component.css']
 })
 export class DelevranceunitaireComponent implements OnInit {
   userc: any;
   iduserco = localStorage.getItem('id')!;
   inputForm!: FormGroup;
+  existingCodes: { codepins: number[], codecarts: number[], numerocartes: number[] } = { codepins: [], codecarts: [], numerocartes: [] };
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private userService:userservice,
+    private userService: userservice,
     private actRoute: ActivatedRoute,
-    private carteservice: CarteService // Renommé pour suivre la convention de nommage
+    private carteservice: CarteService
   ) {}
 
   ngOnInit(): void {
@@ -38,54 +36,54 @@ export class DelevranceunitaireComponent implements OnInit {
       gsm: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8), Validators.pattern('^[0-9]{8}$')]],
       cin: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(8)]],
       nomprenom: ['', Validators.required],
-      email: ['', [Validators.email]],  // Ajoute la validation d'email
+      email: ['', [Validators.email]], // Ajoute la validation d'email
       datedenaissance: ['', [Validators.required, this.ageValidator(18)]]
     });
+
     this.iduserco = localStorage.getItem('id')!;
     if (this.iduserco) {
       this.userService.getUser(this.iduserco).subscribe(user => {
         this.userc = user;
-      //  console.log(this.userc.entreprisename);
-       // console.log(this.userc.libelledecompte);
-
-
       });
     }
+
+    // Fetch all existing codes
+    this.carteservice.getAllCarte().subscribe((cartes: Cartes[]) => {
+      this.existingCodes.codepins = cartes.map(carte => carte.codepin);
+      this.existingCodes.codecarts = cartes.map(carte => carte.codecarte);
+      this.existingCodes.numerocartes = cartes.map(carte => carte.numeroducarte);
+    });
   }
+
+  generateUniqueCode(min: number, max: number, existingCodes: number[]): number {
+    let code;
+    do {
+      code = Math.floor(min + Math.random() * (max - min));
+    } while (existingCodes.includes(code));
+    return code;
+  }
+
   onSubmitE() {
     if (this.inputForm.invalid) {
       this.showError('Veuillez remplir correctement tous les champs du formulaire.');
       return;
     }
-  
-    // Générer un code de 3 chiffres unique et aléatoire pour codepin, qui ne soit pas 000
-    let codepin;
-    do {
-      codepin = Math.floor(100 + Math.random() * 900); // Génère un nombre entre 100 et 999
-    } while (codepin === 0); // Utilisez la syntaxe correcte
-  
-    // Générer un code de 4 chiffres unique et aléatoire pour codecarte, qui ne soit pas 0000
-    let codecarte;
-    do {
-      codecarte = Math.floor(1000 + Math.random() * 9000); // Génère un nombre entre 1000 et 9999
-    } while (codecarte === 0); // Utilisez la syntaxe correcte
-  
-    // Générer un numéro de carte de 12 chiffres unique et aléatoire pour numeroducarte, qui ne soit pas 000000000000
-    let numeroducarte;
-    do {
-      numeroducarte = Math.floor(100000000000 + Math.random() * 900000000000); // Génère un nombre entre 100000000000 et 999999999999
-    } while (numeroducarte === 0); // Utilisez la syntaxe correcte
-  
-    // Calculer la date de validation comme la date actuelle plus 4 ans
+
+    // Generate unique codes
+    const codepin = this.generateUniqueCode(100, 999, this.existingCodes.codepins);
+    const codecarte = this.generateUniqueCode(1000, 9999, this.existingCodes.codecarts);
+    const numeroducarte = this.generateUniqueCode(100000000000, 999999999999, this.existingCodes.numerocartes);
+
+    // Calculate the date of validation as the current date plus 4 years
     const currentDate = new Date();
     const datedevalidation = new Date(currentDate.setFullYear(currentDate.getFullYear() + 4));
-  
+
     this.actRoute.params.subscribe((param) => {
       const idDemande = param['id'];
-  
+
       const Carte: Cartes = {
         cin: this.inputForm.value.cin,
-        idUser: this.iduserco, // Assurez-vous que l'ID de l'utilisateur est un nombre
+        idUser: this.iduserco,
         gsm: this.inputForm.value.gsm,
         email: this.inputForm.value.email,
         datedenaissance: this.inputForm.value.datedenaissance,
@@ -100,11 +98,7 @@ export class DelevranceunitaireComponent implements OnInit {
         statut: "En Attente",
         idDemande: idDemande
       };
-  
-      console.log(codepin);
-      console.log(codecarte + " code carte de 4");
-      console.log(numeroducarte);
-  
+
       this.carteservice.addCarte(Carte).subscribe(
         () => {
           this.showSuccess('Demande ajoutée avec succès !');
@@ -119,8 +113,7 @@ export class DelevranceunitaireComponent implements OnInit {
       );
     });
   }
-  
-  
+
   ageValidator(minAge: number) {
     return (control: AbstractControl): { [key: string]: boolean } | null => {
       if (control.value) {
@@ -139,7 +132,6 @@ export class DelevranceunitaireComponent implements OnInit {
     };
   }
 
-
   showSuccess(message: string) {
     const toastrOptions: Partial<IndividualConfig> = {
       timeOut: 2000, // Durée en millisecondes (2 secondes)
@@ -155,7 +147,4 @@ export class DelevranceunitaireComponent implements OnInit {
     };
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
-
-
-
 }
