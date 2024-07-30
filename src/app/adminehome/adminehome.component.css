@@ -17,6 +17,7 @@
     font-family: "Open Sans", sans-serif;
     background: #f6f9ff;
     color: #444444;
+    height: 110%;
   }
   
   a {
@@ -885,6 +886,7 @@
   /* News & Updates */
   .dashboard .news .post-item+.post-item {
     margin-top: 15px;
+    
   }
   
   .dashboard .news img {
@@ -918,6 +920,7 @@
   /* Recent Sales */
   .dashboard .recent-sales {
     font-size: 14px;
+  
   }
   
   .dashboard .recent-sales .table thead {
@@ -1028,6 +1031,7 @@
   .profile .profile-overview .row {
     margin-bottom: 20px;
     font-size: 15px;
+    
   }
   
   .profile .profile-overview .card-title {

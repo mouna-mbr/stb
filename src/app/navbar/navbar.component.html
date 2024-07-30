@@ -6,14 +6,14 @@
     </div>
 <div style="margin-left: 20px;display: flex;">
   <div>
-      <a class="active" href="#home">Home</a>
-      <a href="#news">News</a>
-      <a href="#contact">Contact</a>
-      <a href="#about">About</a> 
+      <a class="active"  href="#home">Accueil</a>
+      <a href="demande"  *ngIf="isconnected" >Demandes</a>
+      <a type="button"   *ngIf="isconnected" data-bs-toggle="modal" data-bs-target="#exampleModal">Liste des demandes</a>
+      <a  type="button" data-bs-toggle="modal" data-bs-target="#suivie"  *ngIf="isconnected">Suivie</a> 
   </div>
-  <button *ngIf="!isconnected" (click)="register()"> S'inscrire </button>
+  <button  class="button" *ngIf="!isconnected" (click)="register()"> S'inscrire </button>
 
-  <div *ngIf="isconnected" style="margin-top: 13px; margin-left: 815px; height: 100px;">
+  <div *ngIf="isconnected" style="margin-top: 13px; margin-left: 682px; height: 100px;">
     <i (click)="notif()" class="bi bi-bell" style="font-size: 1.5rem;"></i>
     <span (click)="notif()" class="badge rounded-pill badge-notification" style="width: 15px; height: 15px; line-height: 10px; color: white; margin-left: -10px; margin-top: -55px; background-color: rgb(237, 13, 13);">
       {{count}}
@@ -40,5 +40,27 @@
    
 </div>
   
-    
+    <!-- Modal liste -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="margin-top: 200px;width: 300px;">
+    <div class="modal-content drop">
+      <a href="listedesdemandes" style="margin-top: 20px;"  >Liste initial des demandes</a>
+      <a href="listefianldesdemandes" >Liste final des demandes</a>
+      <a href="suividemandes" >Liste des demandes</a>
+      <br>   
+     </div>
+  </div>
+</div>
+    <!-- Modal suivie -->
+    <div class="modal fade" id="suivie" tabindex="-1" aria-labelledby="suivie" aria-hidden="true">
+      <div class="modal-dialog" style="margin-top: 200px;width: 300px;">
+        <div class="modal-content drop">
+          <a href="suividemandes" style="margin-top: 20px;"  >Suivie demandes</a>
+          <a href="listeIdelevanceU" >Suivie délivrance</a>
+          <a href="suiviD" >Suivie cartes</a>
+          <br>   
+         </div>
+      </div>
+    </div>
+
   </body>

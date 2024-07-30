@@ -15,6 +15,8 @@ import { HomeComponent } from './home/home.component';
 import { DelevranceunitaireComponent } from './delevranceunitaire/delevranceunitaire.component';
 import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/listedelevranceunitairei.component';
 import { DelevranceenmasseComponent } from './delevranceenmasse/delevranceenmasse.component';
+import { ValidationdelevranceComponent } from './validationdelevrance/validationdelevrance.component';
+import { SuivialldelivranceComponent } from './suivialldelivrance/suivialldelivrance.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -32,6 +34,10 @@ const routes: Routes = [
   { path: 'carteunitaire/:id', component: DelevranceunitaireComponent },
   { path: 'carteenmasse/:id', component: DelevranceenmasseComponent },
   { path: 'listeIdelevanceU', component: ListedelevranceunitaireiComponent },
+  { path: 'suiviD', component: SuivialldelivranceComponent },
+
+  { path: 'validationFD/:id', component: ValidationdelevranceComponent },
+
   { path: 'register', component: RegisterComponent } // Nouvelle route pour RegisterComponent
 ];
 

@@ -72,7 +72,7 @@ export class DelevranceunitaireComponent implements OnInit {
     // Generate unique codes
     const codepin = this.generateUniqueCode(100, 999, this.existingCodes.codepins);
     const codecarte = this.generateUniqueCode(1000, 9999, this.existingCodes.codecarts);
-    const numeroducarte = this.generateUniqueCode(100000000000, 999999999999, this.existingCodes.numerocartes);
+    const numeroducarte = this.generateUniqueCode(1000000000000000, 9999999999999999, this.existingCodes.numerocartes);
 
     // Calculate the date of validation as the current date plus 4 years
     const currentDate = new Date();

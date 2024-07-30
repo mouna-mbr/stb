@@ -10,4 +10,6 @@ export class User {
     role!:string;
     isagroup!:boolean;
     nbentreprise!:number;
+    isaccepted?:boolean;
+    idUser?:any;
 }

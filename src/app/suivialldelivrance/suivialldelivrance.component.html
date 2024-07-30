@@ -1,0 +1,121 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<body>
+    <div class="all">
+        <div style="margin-top: 30px;">
+            <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Consultation Cartes Prépayées</h2>
+        </div>
+        <div>
+        <div class="radio-inputs">
+            <label class="radio" style="margin-top: -240px;">
+                <input type="radio" name="radio" checked="" (click)="loadCartes()"/>
+                <span class="name">TOUT</span>
+            </label>
+            <label class="radio" style="margin-top: -240px;">
+                <input type="radio" name="radio" (click)="loadDemandeCartestoday()" />
+                <span class="name">Aujourd'hui</span>
+            </label>
+            <label class="radio" style="margin-top: -240px;">
+                <input type="radio" name="radio" (click)="loadDemandeCarteslastday()" />
+                <span class="name">Hier</span>
+            </label>
+            <label class="radio" style="margin-top: -240px;">
+                <input type="radio" name="radio" (click)="loadDemandeCartesthisweek()" />
+                <span class="name">Cette semaine</span>
+            </label>
+        </div>
+    </div>
+        <div class="container" style="margin-top: 40px;">
+            <div><br>
+                <table class="table table-striped">
+                    <thead>
+                      <tr style="height: 60px;">
+                        <th scope="col"></th>
+                        <th scope="col" style="color: #0567a4">Nom de la société</th>
+                        <th scope="col" style="color: #0567a4">Numéro de compte</th>
+                        <th scope="col" style="color: #0567a4">Nom et Prénom</th>
+                        <th scope="col" style="color: #0567a4">Numéro carte</th>
+                        <th scope="col" style="color: #0567a4">Cin</th>
+                        <th scope="col" style="color: #0567a4">Status</th>
+                        <th scope="col" style="color: #0567a4">Détails</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let usr of listCartes; let i = index">
+                        <th scope="row" style="color: #0567a4">{{ i + 1 }}</th>
+                        <td>{{ usr.user?.entreprisename }}</td>
+                        <td>{{ usr.user?.numcompte }}</td>
+                        <td>{{ usr.nomprenom }}</td>
+                        <td>{{ getFormattedCardNumberr(usr) }}</td>
+                        <td>{{ usr.cin }}</td>
+                        <td>{{ usr.statut }}</td>
+                        <td><a (click)="openPopup(usr.idCarte)" data-bs-toggle="modal" href="#exampleModalToggle" role="button" style="color: #0078c5; text-decoration: underline;">Voir...</a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+                <br>
+            </div>
+            
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="height: 1px;width: 1px;">
+                <div class="modal-body">
+                    <div class="flip-card" style="margin-top: -150px;margin-left: 100px;">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <div class="card">
+                                    <div class="card__info">
+                                        <div class="card__logo">DigiCard
+                                            <img src="assets/img/Logo_STB.png" alt="Logo STB" loading="lazy" style="margin-top: -10px; margin-left: 120px;" class="logostb" />
+                                        </div>
+                                        <div class="card__chip" style="margin-left: 20px; width: 30px; height: 30px;">
+                                            <svg class="card__chip-lines" role="img" width="20px" height="20px" viewBox="0 0 100 100" aria-label="Chip">
+                                                <g opacity="0.8">
+                                                    <polyline points="0,50 35,50" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="0,20 20,20 35,35" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="50,0 50,35" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="65,35 80,20 100,20" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="100,50 65,50" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="35,35 65,35 65,65 35,65 35,35" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="0,80 20,80 35,65" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="50,100 50,65" fill="none" stroke="#000" stroke-width="2" />
+                                                    <polyline points="65,65 80,80 100,80" fill="none" stroke="#000" stroke-width="2" />
+                                                </g>
+                                            </svg>
+                                            <div class="card__chip-texture" style="margin-left: 30px;"></div>
+                                        </div>
+                                        <span class="card__digit-group" style="margin-left: 150px;">{{selectedCarte?.nomprenom}}</span><br>
+                                        <div class="card__number" style="margin-left: 30px;">
+                                            <!-- Template Angular -->
+                                            <span class="card__digit-group" style="size: 20px;">
+                                                {{ getFormattedCardNumber() }}
+                                            </span>
+                                        </div>
+                                        <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
+                                        <div class="card__exp-date"><time datetime="2038-01">12/29</time></div>
+                                        <div class="card__name" aria-label="Dee Stroyer" style="margin-left: 10px;">Dee Stroyer</div>
+                                        <div class="card__vendor" role="img" aria-labelledby="card-vendor">
+                                            <span id="card-vendor" class="card__vendor-sr">Mastercard</span>
+                                        </div>
+                                    </div>
+                                    <div class="card__texture"></div>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <div class="strip"></div>
+                                <div class="mstrip"></div>
+                                <div class="sstrip">
+                                    <p class="code">{{selectedCarte?.codepin}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

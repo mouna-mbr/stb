@@ -1,126 +1,162 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
 import { BarChart, LineChart } from 'chartist';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { PdfGeneratorComponent } from '../pdf-generator/pdf-generator.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { userservice } from '../Service/User.service';
+import { User } from '../Models/User';
+import { CarteService } from '../Service/CarteService.service';
+import { Cartes } from '../Models/Cartes';
 
 @Component({
   selector: 'app-adminehome',
   templateUrl: './adminehome.component.html',
-  styleUrls: ['./adminehome.component.css']
+  styleUrls: ['./adminehome.component.css'],
+  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent, ReactiveFormsModule],
+  standalone: true,
+
 })
 export class AdminehomeComponent implements OnInit {
 
-  constructor() { }
+  userCount: number = 0;
+  carteCount: number = 0;
+  Acceptuser: number = 0;
+  groupUserPercentage: number = 0;
+  carteenattentePercentage: number = 0;
+  userattentePercentage: number = 0;
+  listUsersNotAccepted: User[] = [];
+  user!:User;
 
-  startAnimationForLineChart(chart: any) {
-    chart.on('draw', function (data: any) {
-      if (data.type === 'line' || data.type === 'area') {
-        data.element.animate({
-          d: {
-            begin: 600,
-            dur: 700,
-            from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-            to: data.path.clone().stringify(),
-            easing: Chartist.Svg.Easing.easeOutQuint
-          }
-        });
-      } else if (data.type === 'point') {
-        data.element.animate({
-          opacity: {
-            begin: data.index * 80,
-            dur: 500,
-            from: 0,
-            to: 1,
-            easing: 'ease'
-          }
-        });
-      }
-    });
+  constructor(private userService: userservice,private  carteservice :CarteService) {}
+
+  ngOnInit(): void {
+    this.loadUserCount();
+    this.loadUserStats();
+
+    this.loadCartCount();
+    this.loadCrateStats();
+
+    this.loadUsernotAccepted();
+    this.loaduserattentePercentage();
+
   }
 
-  startAnimationForBarChart(chart: any) {
-    chart.on('draw', function (data: any) {
-      if (data.type === 'bar') {
-        data.element.animate({
-          opacity: {
-            begin: data.index * 80,
-            dur: 500,
-            from: 0,
-            to: 1,
-            easing: 'ease'
-          }
-        });
-      }
-    });
-  }
-
-  ngOnInit() {
-    const dataDailySalesChart: any = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-      series: [
-        [12, 17, 7, 17, 23, 18, 38]
-      ]
-    };
-
-    const optionsDailySalesChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 50,
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-    }
-
-    var dailySalesChart = new Chartist.LineChart('#dailySalesChart', dataDailySalesChart, optionsDailySalesChart);
-    this.startAnimationForLineChart(dailySalesChart);
-
-    const dataCompletedTasksChart: any = {
-      labels: ['12p', '3p', '6p', '9p', '12p', '3a', '6a', '9a'],
-      series: [
-        [230, 750, 450, 300, 280, 240, 200, 190]
-      ]
-    };
-
-    const optionsCompletedTasksChart: any = {
-      lineSmooth: Chartist.Interpolation.cardinal({
-        tension: 0
-      }),
-      low: 0,
-      high: 1000,
-      chartPadding: { top: 0, right: 0, bottom: 0, left: 0 }
-    }
-
-    var completedTasksChart = new Chartist.LineChart('#completedTasksChart', dataCompletedTasksChart, optionsCompletedTasksChart);
-    this.startAnimationForLineChart(completedTasksChart);
-
-    var datawebsiteViewsChart = {
-      labels: ['J', 'F', 'M', 'A', 'M', 'J', 'J', 'A', 'S', 'O', 'N', 'D'],
-      series: [
-        [542, 443, 320, 780, 553, 453, 326, 434, 568, 610, 756, 895]
-      ]
-    };
-
-    var optionswebsiteViewsChart = {
-      axisX: {
-        showGrid: false
+  loadUserCount(): void {
+    this.userService.getAllUsers().subscribe(
+      (users) => {
+        this.userCount = users.length;
       },
-      low: 0,
-      high: 1000,
-      chartPadding: { top: 0, right: 5, bottom: 0, left: 0 }
-    };
-
-    var responsiveOptions: any[] = [
-      ['screen and (max-width: 640px)', {
-        seriesBarDistance: 5,
-        axisX: {
-          labelInterpolationFnc: function (value: string[]) {
-            return value[0];
-          }
-          
-        }
-      }]
-    ];
-
-    var websiteViewsChart = new Chartist.BarChart('#websiteViewsChart', datawebsiteViewsChart, optionswebsiteViewsChart, responsiveOptions);
-    this.startAnimationForBarChart(websiteViewsChart);
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
   }
+  loadCartCount(): void {
+    this.carteservice.getAllCarte().subscribe(
+      (cartes) => {
+        this.carteCount = cartes.length;
+      },
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
+  }
+
+
+  loadUserStats(): void {
+    this.userService.getAllUsers().subscribe(
+      (users) => {
+        this.userCount = users.length;
+        const groupUsers = users.filter((user:User) => user.isagroup);
+        this.groupUserPercentage = (groupUsers.length / this.userCount) * 100;
+      },
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
+  }
+  
+  loadUsernotAccepted(): void {
+    this.userService.getAllUsers().subscribe(
+      (users) => {
+        const acceptuser = users.filter((user:User) => !user.isaccepted);
+        this.Acceptuser = acceptuser.length ;
+        this.listUsersNotAccepted=acceptuser;
+      },
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
+  }
+  loaduserattentePercentage(): void {
+    this.carteservice.getAllCarte().subscribe(
+      (users) => {
+        this.userCount = users.length;
+        const status =  users.filter((user:User) => !user.isaccepted);
+        this.userattentePercentage = (status.length / this.carteCount) * 100;
+      },
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
+  }
+
+  loadCrateStats(): void {
+    this.carteservice.getAllCarte().subscribe(
+      (cartes) => {
+        this.carteCount = cartes.length;
+        const status = cartes.filter((carte:Cartes) => carte.statut==='En Attente');
+        this.carteenattentePercentage = (status.length / this.carteCount) * 100;
+      },
+      (err) => {
+        console.error('Error fetching users:', err);
+      }
+    );
+  }
+  Accepter(id: number): void {
+    console.log(id)
+
+    this.userService.getUser(id).subscribe(
+      (user) => {
+        this.user = user;
+        this.user.isaccepted = true;
+  
+        this.userService.editUser(id, this.user).subscribe(
+          (useramod) => {
+            console.log('User accepted:', useramod);
+          },
+          (err) => {
+            console.error('Error updating user:', err);
+          }
+        );
+      },
+      (err) => {
+        console.error('Error fetching user:', err);
+      }
+    );
+  }
+  Refuser(id: number): void {
+    console.log(id)
+    this.userService.getUser(id).subscribe(
+      (user) => {
+        this.user = user;
+        this.user.isaccepted = false;
+  
+        this.userService.editUser(id, this.user).subscribe(
+          (useramod) => {
+            console.log('User accepted:', useramod);
+          },
+          (err) => {
+            console.error('Error updating user:', err);
+          }
+        );
+      },
+      (err) => {
+        console.error('Error fetching user:', err);
+      }
+    );
+  }
+  
 }

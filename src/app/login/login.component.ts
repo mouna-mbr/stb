@@ -60,25 +60,37 @@ export class LoginComponent implements OnInit {
 
   onsubmit() {
     this.userService.getAllUsers().subscribe(res => {
-      if (res == null) {
+      if (!res || res.length === 0) {
         this.showError("User not found!!");
-      } else {
-        const user = res.find((a: any) => {
-          return a.email === this.inputform.value.email && a.password === this.inputform.value.password;
-        });
-        if (user) {
-          if (this.inputform.value.rememberMe) {
-            localStorage.setItem('rememberedEmail', this.inputform.value.email);
-          } else {
-            localStorage.removeItem('rememberedEmail');
-          }
-          localStorage.setItem('id', user.idUser);
-          this.router.navigate(['home']);
-          this.showSuccess("Vous êtes connecté.");
-        } else {
-          this.showError("User not found!!");
-        }
+        return;
       }
+  
+      const user = res.find((a: any) => {
+        return a.email === this.inputform.value.email && a.password === this.inputform.value.password;
+      });
+  
+      if (!user) {
+        this.showError("User not found!!");
+        return;
+      }
+  
+      if (user.isaccepted === false) {
+        this.showError("User not Accepted!!");
+      } else {
+        if (this.inputform.value.rememberMe) {
+          localStorage.setItem('rememberedEmail', this.inputform.value.email);
+        } else {
+          localStorage.removeItem('rememberedEmail');
+        }
+  
+        localStorage.setItem('id', user.idUser);
+        this.router.navigate(['home']);
+        this.showSuccess("Vous êtes connecté.");
+      }
+    }, error => {
+      console.error('Error fetching users:', error);
+      this.showError("An error occurred while fetching users.");
     });
   }
+  
 }

@@ -22,7 +22,7 @@ export class DelevranceenmasseComponent {
   csvData: any[] = [];
   csvHeaders: string[] = [];
 
-  constructor(private http: HttpClient, private carteService: CarteService, private toastr: ToastrService,    private actRoute: ActivatedRoute  ) {}
+  constructor(private http: HttpClient,    private router: Router,    private carteService: CarteService, private toastr: ToastrService,    private actRoute: ActivatedRoute  ) {}
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
@@ -68,7 +68,7 @@ export class DelevranceenmasseComponent {
           datedevalidation: new Date(new Date().setFullYear(new Date().getFullYear() + 4)),
           codepin: this.generateUniqueCode(100, 900), // Remplacer par une méthode pour assurer l'unicité
           codecarte: this.generateUniqueCode(1000, 9000), // Remplacer par une méthode pour assurer l'unicité
-          numeroducarte: this.generateUniqueCode(100000000000, 900000000000), // Remplacer par une méthode pour assurer l'unicité
+          numeroducarte: this.generateUniqueCode(1000000000000000, 9000000000000000), // Remplacer par une méthode pour assurer l'unicité
           delevranceF: false,
           delevranceI: true,
           idUser: localStorage.getItem('id')!, // Assurez-vous que cet ID est valide
@@ -83,6 +83,8 @@ export class DelevranceenmasseComponent {
         this.carteService.addCarte(carte).subscribe(
           () => {
             this.showSuccess('Carte créée avec succès !');
+            this.router.navigate(["listeIdelevanceU"]);
+
           },
           error => {
             this.showError('Une erreur est survenue lors de la création de la carte.');

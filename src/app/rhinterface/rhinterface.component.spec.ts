@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListedelevranceComponent } from './listedelevrance.component';
+import { RhinterfaceComponent } from './rhinterface.component';
 
-describe('ListedelevranceComponent', () => {
-  let component: ListedelevranceComponent;
-  let fixture: ComponentFixture<ListedelevranceComponent>;
+describe('RhinterfaceComponent', () => {
+  let component: RhinterfaceComponent;
+  let fixture: ComponentFixture<RhinterfaceComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListedelevranceComponent]
+      imports: [RhinterfaceComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ListedelevranceComponent);
+    fixture = TestBed.createComponent(RhinterfaceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

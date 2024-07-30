@@ -94,6 +94,7 @@ export class RegisterComponent implements OnInit {
       role:"RH",
       isagroup:this.check,
       nbentreprise:this.inputForm.value.entreprisenumber,
+      isaccepted:false
     };
 
     this.userService.getAllUsers().subscribe(

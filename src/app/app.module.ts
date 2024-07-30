@@ -23,6 +23,8 @@ import { HomeComponent } from './home/home.component';
 import { DelevranceunitaireComponent } from './delevranceunitaire/delevranceunitaire.component';
 import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/listedelevranceunitairei.component';
 import { DelevranceenmasseComponent } from './delevranceenmasse/delevranceenmasse.component';
+import { ValidationdelevranceComponent } from './validationdelevrance/validationdelevrance.component';
+import { SuivialldelivranceComponent } from './suivialldelivrance/suivialldelivrance.component';
 
 
 export const routes: Routes = [
@@ -39,6 +41,12 @@ export const routes: Routes = [
   { path: 'carteunitaire/:id', component: DelevranceunitaireComponent },
   { path: 'listeIdelevanceU', component: ListedelevranceunitaireiComponent },
   { path: 'carteenmasse/:id', component: DelevranceenmasseComponent },
+  { path: 'validationFD', component: ValidationdelevranceComponent },
+  { path: 'suiviD', component: SuivialldelivranceComponent },
+  { path: 'dashboard', component: AdminehomeComponent },
+
+
+
 
 
 
@@ -49,7 +57,6 @@ export const routes: Routes = [
   declarations: [
     AppComponent,
     FormComponent,
-    AdminehomeComponent,
     RegisterComponent,
     LoginComponent,
     
