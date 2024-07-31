@@ -12,4 +12,5 @@ export class User {
     nbentreprise!:number;
     isaccepted?:boolean;
     idUser?:any;
+    idroupemere?:any;
 }

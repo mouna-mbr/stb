@@ -2,17 +2,17 @@
     <app-navbar></app-navbar>
   </div>
   <body>
-    <div class="all">
-        <form class="login needs-validation" style="margin-top: -20px;" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
-
+   
+ <form class="login needs-validation" style="margin-top: -20px;" [formGroup]="inputForm" (ngSubmit)="onSubmit()">
+ 
     <div class="container">
       <br>
-      <h2 style="color: #064570; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        Ajouter RH de la sous-entreprise
+      <h2 style="color: #064570; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left: 20px;">
+        Ajouter le validateur et l'initiateur
       </h2>
             
       <div style="display: flex; margin-top: 30px;">
-        <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 30px;">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 180px;">
           <div style="display: flex;">
             <div>
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
@@ -32,7 +32,7 @@
             </div>
           </div>
           
-            <input type="text" id="entreprisename" class="login__input" formControlName="entreprisename" >
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc.entreprisename }}</h5>
 
         </div>
   
@@ -50,7 +50,7 @@
               <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Matricule Fiscale</h5>
             </div>
           </div>
-            <input type="text" id="matriculeFiscale" class="login__input" formControlName="matriculeFiscale" >
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc.matriculeFiscale }}</h5>
         </div>
   
         <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 70px;">
@@ -67,15 +67,16 @@
               <h5 class="form-group" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Numéro de compte</h5>
             </div>
           </div>
-           <input type="tel" id="numcompte" formControlName="numcompte" class="login__input " required />
+          <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc.numcompte }}</h5>
         </div>
        
       </div>
     </div>
+    <div *ngIf="isvalidateur" class="all">
       <div style=" margin-left: 100px; width: 1120px">
-        <div class="form-group" style="display: flex;margin-top: -20px;">
-            <label class="material-checkbox">
-              RH:
+        <div class="form-group" style="display: flex;margin-top: -70px;">
+            <label class="material-checkbox" style="margin-top: 15px;">
+              Validateur:
           </label>
           </div>
          <div class="form-group">
@@ -92,15 +93,47 @@
             <label for="tel">GSM</label>
             <input  type="tel"  id="tel"  formControlName="tel" class="form-control">
           </div>
-  
+    
+         
         <button class="button login__submit" >
           <span class="button__text" style="margin-left: 20px;">Ajouter</span>
         </button>
         <br>
       
       </div> 
+     
+     </div> 
     </form>
-    </div> 
+    <form *ngIf="!isvalidateur" class="login needs-validation" style="margin-top: -20px;" [formGroup]="inputFormi" (ngSubmit)="onSubmitInitiateur()">
+
+     <div class="all"> 
+        <div style=" margin-left: 100px; width: 1120px">
+        <div class="form-group" style="display: flex;">
+        <label class="material-checkbox" style="margin-top: 5px;">
+          Initiateur:
+      </label>
+      </div>
+     <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="emaili" formControlName="emaili" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+      <label for="Password">Password</label>
+      <input  type="password"  id="passwordi" formControlName="passwordi" class="form-control">
+    </div>
+   
+    <div class="form-group">
+        <label for="tel">GSM</label>
+        <input  type="tel"  id="teli"  formControlName="teli" class="form-control">
+      </div>
+      <button class="button login__submit" >
+        <span class="button__text" style="margin-left: 20px;">Ajouter</span>
+      </button><br>
+    </div>
+      </div>   
+   
+    </form>
 
   </body>
   

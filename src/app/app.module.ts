@@ -25,6 +25,8 @@ import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/li
 import { DelevranceenmasseComponent } from './delevranceenmasse/delevranceenmasse.component';
 import { ValidationdelevranceComponent } from './validationdelevrance/validationdelevrance.component';
 import { SuivialldelivranceComponent } from './suivialldelivrance/suivialldelivrance.component';
+import { RhinterfaceComponent } from './rhinterface/rhinterface.component';
+import { RhsousentrepriseComponent } from './rhsousentreprise/rhsousentreprise.component';
 
 
 export const routes: Routes = [
@@ -44,12 +46,8 @@ export const routes: Routes = [
   { path: 'validationFD', component: ValidationdelevranceComponent },
   { path: 'suiviD', component: SuivialldelivranceComponent },
   { path: 'dashboard', component: AdminehomeComponent },
-
-
-
-
-
-
+  { path: 'rhinterface', component: RhinterfaceComponent },
+  { path: 'rhsousentreprise', component: RhsousentrepriseComponent },
   { path: '**', redirectTo: 'register' } // rediriger les routes inconnues vers RegisterComponent
 ];
 

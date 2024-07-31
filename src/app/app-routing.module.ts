@@ -17,10 +17,14 @@ import { ListedelevranceunitaireiComponent } from './listedelevranceunitairei/li
 import { DelevranceenmasseComponent } from './delevranceenmasse/delevranceenmasse.component';
 import { ValidationdelevranceComponent } from './validationdelevrance/validationdelevrance.component';
 import { SuivialldelivranceComponent } from './suivialldelivrance/suivialldelivrance.component';
+import { RhinterfaceComponent } from './rhinterface/rhinterface.component';
+import { RhsousentrepriseComponent } from './rhsousentreprise/rhsousentreprise.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'dashboard', component: AdminehomeComponent },
+  { path: 'rhinterface', component: RhinterfaceComponent },
+  { path: 'rhsousentreprise', component: RhsousentrepriseComponent },
   { path: 'demande', component: DemandedecarteComponent },
   { path: 'login', component: LoginComponent },
   {path:'pdf',component:PdfGeneratorComponent},
