@@ -112,13 +112,13 @@
                         <th scope="row"><a href="#">#{{ i + 1 }}</a></th>
                         <td>{{ usr.entreprisename }}</td>
                         <td><a href="#" class="text-primary">{{ usr.numcompte }}</a></td>
-                        <td>{{ usr.isagroup }} </td>
+                        <td>{{ usr.isAGroup }} </td>
                         <td><span class="badge bg-success">{{ usr.nbentreprise }}</span></td>
                         <td style="display: flex;">
                           <span class="badge bg-success" (click)="Accepter(usr.idUser)" style="cursor: pointer;">Accepter</span>
                           <span class="badge bg-danger" style="margin-left: 5px; cursor: pointer;">
 
-                            <a (click)="Refuser(usr.idUser)" style="color: inherit; text-decoration: none;">Réfuser </a>
+                            <a (click)=" (usr.idUser)" style="color: inherit; text-decoration: none;">Réfuser </a>
                           </span>
                         </td>
                       </tr>

@@ -39,7 +39,7 @@ export class AdminehomeComponent implements OnInit {
     this.loadCrateStats();
 
     this.loadUsernotAccepted();
-    this.loaduserattentePercentage();
+    this.loadUserAttentePercentage();
 
   }
 
@@ -54,7 +54,7 @@ export class AdminehomeComponent implements OnInit {
     );
   }
   loadCartCount(): void {
-    this.carteservice.getAllCarte().subscribe(
+    this.carteservice.getAllCartes().subscribe(
       (cartes) => {
         this.carteCount = cartes.length;
       },
@@ -69,7 +69,7 @@ export class AdminehomeComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       (users) => {
         this.userCount = users.length;
-        const groupUsers = users.filter((user:User) => user.isagroup);
+        const groupUsers = users.filter((user:User) => user.isAGroup);
         this.groupUserPercentage = (groupUsers.length / this.userCount) * 100;
       },
       (err) => {
@@ -81,7 +81,7 @@ export class AdminehomeComponent implements OnInit {
   loadUsernotAccepted(): void {
     this.userService.getAllUsers().subscribe(
       (users) => {
-        const acceptuser = users.filter((user:User) => !user.isaccepted);
+        const acceptuser = users.filter((user:User) => !user.isAccepted);
         this.Acceptuser = acceptuser.length ;
         this.listUsersNotAccepted=acceptuser;
       },
@@ -90,21 +90,22 @@ export class AdminehomeComponent implements OnInit {
       }
     );
   }
-  loaduserattentePercentage(): void {
-    this.carteservice.getAllCarte().subscribe(
+  loadUserAttentePercentage(): void {
+    this.userService.getAllUsers().subscribe(
       (users) => {
         this.userCount = users.length;
-        const status =  users.filter((user:User) => !user.isaccepted);
-        this.userattentePercentage = (status.length / this.carteCount) * 100;
+        const usersEnAttente = users.filter((user: User) => !user.isAccepted);
+        this.userattentePercentage = (usersEnAttente.length / this.userCount) * 100;
       },
       (err) => {
         console.error('Error fetching users:', err);
       }
     );
   }
+  
 
   loadCrateStats(): void {
-    this.carteservice.getAllCarte().subscribe(
+    this.carteservice.getAllCartes().subscribe(
       (cartes) => {
         this.carteCount = cartes.length;
         const status = cartes.filter((carte:Cartes) => carte.statut==='En Attente');
@@ -121,7 +122,7 @@ export class AdminehomeComponent implements OnInit {
     this.userService.getUser(id).subscribe(
       (user) => {
         this.user = user;
-        this.user.isaccepted = true;
+        this.user.isAccepted = true;
   
         this.userService.editUser(id, this.user).subscribe(
           (useramod) => {
@@ -142,7 +143,7 @@ export class AdminehomeComponent implements OnInit {
     this.userService.getUser(id).subscribe(
       (user) => {
         this.user = user;
-        this.user.isaccepted = false;
+        this.user.isAccepted = false;
   
         this.userService.editUser(id, this.user).subscribe(
           (useramod) => {

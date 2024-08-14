@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { userservice } from '../Service/User.service';
 import { ToastrService, IndividualConfig } from 'ngx-toastr';
+import { User } from '../Models/User';
 
 @Component({
   selector: 'app-login',
@@ -19,21 +20,21 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: userservice,
     private toastr: ToastrService
-  ){}
+  ) {}
 
   showSuccess(message: string) {
     const toastrOptions: Partial<IndividualConfig> = {
-      timeOut: 2000, // Durée en millisecondes (2 secondes)
-      toastClass: 'toast-custom toast-success' // Utiliser les classes personnalisées pour le succès
+      timeOut: 2000, // Duration in milliseconds (2 seconds)
+      toastClass: 'toast-custom toast-success' // Custom classes for success
     };
     this.toastr.success(message, 'Succès', toastrOptions);
   }
 
   showError(message: string, title: string = 'Erreur', options?: Partial<IndividualConfig>) {
     const toastrOptions: Partial<IndividualConfig> = {
-      timeOut: 2000, // Durée en millisecondes (2 secondes)
-      toastClass: 'toast-custom',
-      //iconClass: 'fas fa-exclamation-circle' // Ajoutez l'icône ici si nécessaire
+      timeOut: 2000, // Duration in milliseconds (2 seconds)
+      toastClass: 'toast-custom'
+      // iconClass: 'fas fa-exclamation-circle' // Add icon here if necessary
     };
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
@@ -58,39 +59,46 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onsubmit() {
+  onSubmit() {
     this.userService.getAllUsers().subscribe(res => {
       if (!res || res.length === 0) {
-        this.showError("User not found!!");
+        this.showError("Utilisateur non trouvé !!");
         return;
       }
-  
-      const user = res.find((a: any) => {
-        return a.email === this.inputform.value.email && a.password === this.inputform.value.password;
-      });
-  
+
+      const user = res.find((a: User) => 
+        a.email === this.inputform.value.email && a.password === this.inputform.value.password 
+    );
+
+
       if (!user) {
-        this.showError("User not found!!");
+        this.showError("Utilisateur non trouvé !!");
+        return;
+      } else if (user && !user.isAccepted) {
+        this.showError("Utilisateur non accepté !!");
+        
+        console.log(user.isAccepted);
         return;
       }
-  
-      if (user.isaccepted === false) {
-        this.showError("User not Accepted!!");
+
+      if (this.inputform.value.rememberMe) {
+        localStorage.setItem('rememberedEmail', this.inputform.value.email);
       } else {
-        if (this.inputform.value.rememberMe) {
-          localStorage.setItem('rememberedEmail', this.inputform.value.email);
-        } else {
-          localStorage.removeItem('rememberedEmail');
-        }
-  
-        localStorage.setItem('id', user.idUser);
-        this.router.navigate(['home']);
-        this.showSuccess("Vous êtes connecté.");
+        localStorage.removeItem('rememberedEmail');
       }
+
+      localStorage.setItem('id', user.idUser);
+      localStorage.setItem('role', user.role);
+
+      if (user.role === "admine") {
+        this.router.navigate(['dashboard']);
+      } else {
+        this.router.navigate(['home']);
+      }
+      this.showSuccess("Vous êtes connecté.");
     }, error => {
-      console.error('Error fetching users:', error);
-      this.showError("An error occurred while fetching users.");
+      console.error('Erreur lors de la récupération des utilisateurs :', error);
+      this.showError("Une erreur s'est produite lors de la récupération des utilisateurs.");
     });
   }
-  
 }

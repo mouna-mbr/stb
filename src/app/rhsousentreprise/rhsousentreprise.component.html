@@ -104,7 +104,7 @@
      
      </div> 
     </form>
-    <form *ngIf="!isvalidateur" class="login needs-validation" style="margin-top: -20px;" [formGroup]="inputFormi" (ngSubmit)="onSubmitInitiateur()">
+    <form *ngIf="!isvalidateur&&initiateur" class="login needs-validation" style="margin-top: -20px;" [formGroup]="inputFormi" (ngSubmit)="onSubmitInitiateur()">
 
      <div class="all"> 
         <div style=" margin-left: 100px; width: 1120px">
@@ -134,6 +134,9 @@
       </div>   
    
     </form>
-
+<div *ngIf="!isvalidateur&&!initiateur">
+  <h2 style="color: rgba(0, 0, 0, 0.381); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-left: 550px;margin-top: 100px;">
+    Vous les avez déjà ajoutés  </h2>
+</div>
   </body>
   

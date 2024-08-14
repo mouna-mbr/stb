@@ -1,17 +1,19 @@
 <div>
   <app-navbar></app-navbar>
 </div>
-<body>
-  <div class="all">
-
+<div class="all">
   <div class="container">
     <br>
     <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Demande de Cartes Prépayées</h2>
     <div style="display: flex; margin-top: 30px;">
-      <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 100px;">
+      <!-- Card for Nom de la société -->
+      <div type="button" class="btn btn-primary shadow-lg p-3 mb-5 bg-body rounded card"
+        style="border-radius: 5px; height: 140px; width: 250px; margin-left: 100px;"
+        data-bs-toggle="modal" data-bs-target="#test">
         <div style="display: flex;">
           <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-building-skyscraper">
+            <!-- SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-building-skyscraper">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M3 21l18 0" />
               <path d="M5 21v-14l8 -4v18" />
@@ -29,10 +31,33 @@
         <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.entreprisename }}</h5>
       </div>
 
+      <!-- Modal for Nom de la société -->
+      <div class="modal fade" id="test" tabindex="-1" aria-labelledby="testLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="group">
+                <svg class="iconn" aria-hidden="true" viewBox="0 0 24 24"><g><path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path></g></svg>
+                <input placeholder="Search" type="search" class="input">
+              </div>      
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                  <p *ngFor="let user in groupUsers">{{user.entreprisename}}</p>
+             
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      <!-- Card for Libellé du compte -->
       <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 150px; height: 140px; width: 250px; margin-left: 70px; box-shadow: #0078c9;">
         <div style="display: flex;">
           <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-accessible">
+            <!-- SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-accessible">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
               <path d="M10 16.5l2 -3l2 3m-2 -3v-2l3 -1m-6 0l3 1" />
@@ -46,10 +71,12 @@
         <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.libelledecompte }}</h5>
       </div>
 
+      <!-- Card for Numéro de compte -->
       <div class="shadow-lg p-3 mb-5 bg-body rounded card" style="border-radius: 5px; height: 140px; width: 250px; margin-left: 70px;">
         <div style="display: flex;">
           <div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-number">
+            <!-- SVG Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icon-tabler-number">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M4 17v-10l7 10v-10" />
               <path d="M15 17h5" />
@@ -62,14 +89,13 @@
         </div>
         <h5 style="color: #fff; margin-top: 20px; margin-left: 22px;">{{ userc?.numcompte }}</h5>
       </div>
-     
     </div>
   </div>
 
 
-
-    <div style=" margin-left: 100px; width: 1120px">
-      <form class="login needs-validation" [formGroup]="inputForm" (ngSubmit)="onSubmitE()" >   <div class="form-group">
+  <div style="margin-left: 100px; width: 1120px">
+    <form class="login needs-validation" [formGroup]="inputForm" (ngSubmit)="onSubmitE()">
+      <div class="form-group">
         <label for="nombreCartes">Saisir le nombre de cartes demandées</label>
         <input type="number" id="nombreCartes" formControlName="nombredescarte" class="form-control" required />
       </div>
@@ -81,19 +107,17 @@
 
       <div class="form-group" style="display: flex;">
         <label class="material-checkbox" style="margin-top: 10px;">
-          <input type="checkbox" formControlName="cgu"d="cgu" name="cgu" required >
-          <span class="checkmark" ></span>
+          <input type="checkbox" formControlName="cgu" id="cgu" name="cgu" required>
+          <span class="checkmark"></span>
           CGU (Doit être lu et approuvé pour passer à l'enregistrement)
         </label>
         <app-pdf-generator style="margin-left: 355px;"></app-pdf-generator>
-
       </div>
-      
-      <button class="button login__submit" >
+
+      <button class="button login__submit">
         <span class="button__text" style="margin-left: 20px;">Envoyer</span>
       </button>
       <br>
-      </form>
-    </div>
+    </form>
   </div>
-</body>
+</div>

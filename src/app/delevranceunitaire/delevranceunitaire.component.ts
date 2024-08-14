@@ -18,7 +18,7 @@ import { CarteService } from '../Service/CarteService.service';
 })
 export class DelevranceunitaireComponent implements OnInit {
   userc: any;
-  iduserco = localStorage.getItem('id')!;
+  iduserco : any;
   inputForm!: FormGroup;
   existingCodes: { codepins: number[], codecarts: number[], numerocartes: number[] } = { codepins: [], codecarts: [], numerocartes: [] };
 
@@ -48,7 +48,7 @@ export class DelevranceunitaireComponent implements OnInit {
     }
 
     // Fetch all existing codes
-    this.carteservice.getAllCarte().subscribe((cartes: Cartes[]) => {
+    this.carteservice.getAllCartes().subscribe((cartes: Cartes[]) => {
       this.existingCodes.codepins = cartes.map(carte => carte.codepin);
       this.existingCodes.codecarts = cartes.map(carte => carte.codecarte);
       this.existingCodes.numerocartes = cartes.map(carte => carte.numeroducarte);

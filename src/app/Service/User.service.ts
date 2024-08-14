@@ -1,41 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { User } from '../Models/User';
 
 @Injectable({
   providedIn: 'root'
 })
 export class userservice {
-  readonly API_URL = 'http://localhost:9090/SpringMVC/user';
+  readonly API_URL = 'http://localhost:5285/api/Users';
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllUsers() {
-    return this.httpClient.get<any>(`${this.API_URL}/all`);
+  getAllUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.API_URL);
   }
 
-  addUser(user: any) {
-    return this.httpClient.post(`${this.API_URL}/add`, user);
+  addUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(this.API_URL, user);
   }
 
-  editUser(id: any, user: any) {
-    return this.httpClient.put(`${this.API_URL}/${id}`, user);
+  editUser(id: number, user: User): Observable<void> {
+    return this.httpClient.put<void>(`${this.API_URL}/${id}`, user);
   }
 
-  deleteUser(id: any) {
-    return this.httpClient.delete(`${this.API_URL}/delete/${id}`);
+  deleteUser(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.API_URL}/${id}`);
   }
 
-  getUser(id: any) {
+  getUser(id: any): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/${id}`);
   }
 
-  getEtudiantByCompteId(id: any) {
+  // Adjusted endpoint names to match typical CRUD operations
+  // Assuming these endpoints exist in the backend
+  getUserByCompteId(id: number): Observable<User> {
     return this.httpClient.get<User>(`${this.API_URL}/getbycompteid/${id}`);
   }
 
-  getEtudiantByCompteEmail(email: any) {
+  getUserByEmail(email: string): Observable<boolean> {
     return this.httpClient.get<boolean>(`${this.API_URL}/getbyemail/${email}`);
   }
- 
 }

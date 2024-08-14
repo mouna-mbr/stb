@@ -36,7 +36,7 @@ export class ListedelevranceunitaireiComponent  implements OnInit {
   }
 
   loadCartes(): void {
-    this.cartes.getAllCarte().subscribe(
+    this.cartes.getAllCartes().subscribe(
       (res) => {
         this.listCartes = res.filter((carte: Cartes) => 
           carte.delevranceF === false 
@@ -65,7 +65,7 @@ export class ListedelevranceunitaireiComponent  implements OnInit {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
 
-    this.cartes.getAllCarte().subscribe(
+    this.cartes.getAllCartes().subscribe(
       (res) => {
         this.listCartes = res.filter((carte: Cartes) => {
           const carteDate = new Date(carte.time);
@@ -98,7 +98,7 @@ export class ListedelevranceunitaireiComponent  implements OnInit {
     yesterday.setDate(yesterday.getDate() - 1); // Récupère la date d'hier
     yesterday.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
 
-    this.cartes.getAllCarte().subscribe(
+    this.cartes.getAllCartes().subscribe(
       (res) => {
         this.listCartes = res.filter((carte: Cartes) => {
           const carteDate = new Date(carte.time);
@@ -130,7 +130,7 @@ export class ListedelevranceunitaireiComponent  implements OnInit {
     const startOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay()); // Détermine le début de la semaine
     startOfWeek.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
 
-    this.cartes.getAllCarte().subscribe(
+    this.cartes.getAllCartes().subscribe(
       (res) => {
         this.listCartes = res.filter((carte: Cartes) => {
           const demandeDate = new Date(carte.time);

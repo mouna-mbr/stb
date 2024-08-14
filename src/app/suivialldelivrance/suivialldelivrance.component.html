@@ -3,31 +3,31 @@
 </div>
 <body>
     <div class="all">
-        <div style="margin-top: 30px;">
-            <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">Consultation Cartes Prépayées</h2>
+
+        <div >
+            <h2 style="color: #064570;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;margin-top: 20px;">Consultation Cartes Prépayées</h2>
         </div>
-        <div>
-        <div class="radio-inputs">
-            <label class="radio" style="margin-top: -240px;">
+        <div class="radio-inputs" >
+            <label class="radio" >
                 <input type="radio" name="radio" checked="" (click)="loadCartes()"/>
                 <span class="name">TOUT</span>
             </label>
-            <label class="radio" style="margin-top: -240px;">
+            <label class="radio">
                 <input type="radio" name="radio" (click)="loadDemandeCartestoday()" />
                 <span class="name">Aujourd'hui</span>
             </label>
-            <label class="radio" style="margin-top: -240px;">
+            <label class="radio" >
                 <input type="radio" name="radio" (click)="loadDemandeCarteslastday()" />
                 <span class="name">Hier</span>
             </label>
-            <label class="radio" style="margin-top: -240px;">
+            <label class="radio" >
                 <input type="radio" name="radio" (click)="loadDemandeCartesthisweek()" />
                 <span class="name">Cette semaine</span>
             </label>
         </div>
-    </div>
-        <div class="container" style="margin-top: 40px;">
-            <div><br>
+        <div class="container" >
+            <div>
+                <br>
                 <table class="table table-striped">
                     <thead>
                       <tr style="height: 60px;">

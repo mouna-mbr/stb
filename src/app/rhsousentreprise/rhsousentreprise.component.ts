@@ -120,9 +120,9 @@ export class RhsousentrepriseComponent implements OnInit {
       numcompte: this.userc.numcompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role:"validateur",
-      isagroup: false,
+      isAGroup: false,
       nbentreprise: 0,
-      isaccepted: true,
+      isAccepted: true,
       idroupemere: localStorage.getItem('id'),
     };
 
@@ -176,9 +176,9 @@ export class RhsousentrepriseComponent implements OnInit {
       numcompte: this.userc.numcompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role: "initiateur",
-      isagroup: false,
+      isAGroup: false,
       nbentreprise: 0,
-      isaccepted: true,
+      isAccepted: true,
       idroupemere: localStorage.getItem('id'),
     };
 

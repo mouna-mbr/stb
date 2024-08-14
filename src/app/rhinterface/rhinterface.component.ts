@@ -104,9 +104,9 @@ export class RhinterfaceComponent implements OnInit {
       numcompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role: "RH",
-      isagroup: false,
+      isAGroup: false,
       nbentreprise: 0,
-      isaccepted: true,
+      isAccepted: true,
       idroupemere: localStorage.getItem('id'),
     };
 

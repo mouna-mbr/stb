@@ -92,9 +92,9 @@ export class RegisterComponent implements OnInit {
       numcompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role:"RH",
-      isagroup:this.check,
+      isAGroup:this.check,
       nbentreprise:this.inputForm.value.entreprisenumber,
-      isaccepted:false
+      isAccepted:false
     };
 
     this.userService.getAllUsers().subscribe(

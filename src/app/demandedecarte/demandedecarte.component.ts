@@ -7,33 +7,59 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { IndividualConfig, ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { DemandecartesService } from '../Service/DemandecartesService.service'; // Renommé pour suivre la convention de nommage
-import {  Demandecarteswithoutid } from '../Models/Demandecartes';
-import { userservice } from '../Service/User.service';
+import { Demandecarteswithoutid } from '../Models/Demandecartes';
+import { userservice } from '../Service/User.service'; // Renommé pour suivre la convention de nommage
 
 @Component({
   selector: 'app-demandedecarte',
   templateUrl: './demandedecarte.component.html',
   styleUrls: ['./demandedecarte.component.css'],
   standalone: true,
-  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent,ReactiveFormsModule]
+  imports: [CommonModule, NavbarComponent, PdfGeneratorComponent, ReactiveFormsModule]
 })
 export class DemandedecarteComponent implements OnInit {
-  userc: any;
-  iduserco = localStorage.getItem('id')!;
+  userc: User | undefined;
+  iduserco: any | null = localStorage.getItem('id');
   inputForm!: FormGroup;
+  groupUsers: User[] = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private toastr: ToastrService,
-    private userService:userservice,
+    private userService: userservice, // Renommé pour suivre la convention de nommage
     private demandecarteService: DemandecartesService // Renommé pour suivre la convention de nommage
   ) {}
+
+  ngOnInit(): void {
+    this.createForm();
+    
+    if (this.iduserco) {
+      this.userService.getUser(this.iduserco).subscribe(
+        user => {
+          this.userc = user;
+          if (user.isAGroup) {
+            this.userService.getAllUsers().subscribe(
+              users => {
+                this.groupUsers = users.filter((u:User) => u.idroupemere === u.idUser);
+              },
+              err => {
+                console.error('Error fetching users:', err);
+              }
+            );
+          }
+        },
+        err => {
+          console.error('Error fetching user:', err);
+        }
+      );
+    }
+  }
 
   createForm() {
     this.inputForm = this.fb.group({
       nombredescarte: ['', Validators.required],
-      cgu: ['', Validators.required],
+      cgu: [false, Validators.requiredTrue], // Assurez-vous que c'est un boolean pour le checkbox
       commentaire: ['']
     });
   }
@@ -54,36 +80,20 @@ export class DemandedecarteComponent implements OnInit {
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
 
-ngOnInit(): void {
-    //console.log(this.iduserco);
-
-    this.createForm();
-    this.iduserco = localStorage.getItem('id')!;
-    if (this.iduserco) {
-      this.userService.getUser(this.iduserco).subscribe(user => {
-        this.userc = user;
-      //  console.log(this.userc.entreprisename);
-       // console.log(this.userc.libelledecompte);
-
-
-      });
-    }
-  }
-
   onSubmitE() {
     if (this.inputForm.invalid) {
       this.showError('Veuillez remplir correctement tous les champs du formulaire.');
       return;
     }
 
-    const demandeCarte:  Demandecarteswithoutid = {
+    const demandeCarte: Demandecarteswithoutid = {
       nombredescarte: this.inputForm.value.nombredescarte,
-      idUser: this.iduserco, // Assurez-vous que l'ID de l'utilisateur est un nombre
+      idUser: this.iduserco!, // Assurez-vous que l'ID de l'utilisateur est un string
       commentaire: this.inputForm.value.commentaire,
       validationI: false,
       validationF: false,
-      statut:"En Attente",
-      time: new Date(),
+      statut: "En Attente",
+      time: new Date()
     };
 
     this.demandecarteService.addDemandeCarte(demandeCarte).subscribe(

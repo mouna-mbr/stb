@@ -15,6 +15,7 @@ export class Cartes{
     user?: any; // Remplacez `any` par l'interface utilisateur appropriée si elle existe
     time!:Date;
     idCarte?:any;
+    isAccepted?:any;
     idDemande!:any;
 
 }

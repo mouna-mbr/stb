@@ -8,9 +8,10 @@ export class User {
     numcompte!: number;
     matriculeFiscale!: string;
     role!:string;
-    isagroup!:boolean;
+    isAGroup!:boolean;
     nbentreprise!:number;
-    isaccepted?:boolean;
+    isAccepted?:boolean;
     idUser?:any;
     idroupemere?:any;
+    
 }

@@ -163,6 +163,7 @@
 	transition: .2s;
     color: black;
 }
+
 /* Styles personnalisés pour Toastr */
 ::ng-deep .toast-error {
     background-color: #ffffff !important; /* Fond blanc */
@@ -299,6 +300,51 @@ body {
     border-radius: 20px;
     box-shadow: -5px -5px 15px 5px rgba(177, 198, 237, 0.443), 5px 5px 15px 7px rgba(177, 198, 237, 0.443);
     
-
-
 }
+/*recherche*/
+.group {
+  display: flex;
+  line-height: 28px;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+ }
+ 
+ .input {
+  width: 400px;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+ }
+ 
+ .input::placeholder {
+  color: #9e9ea7;
+ }
+ 
+ .input:focus, input:hover {
+  outline: none;
+  border-color: #0078c5;
+  background-color: #fff;
+  box-shadow: 0 0 0 4px #007ac53f;
+ }
+ 
+ .iconn {
+  position: absolute;
+  left: 1rem;
+  fill: #9e9ea7;
+  width: 1rem;
+  height: 1rem;
+ }
+ 
+ 
+ 
+ 
+ 
+ 

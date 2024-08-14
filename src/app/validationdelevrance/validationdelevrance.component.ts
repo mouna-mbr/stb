@@ -18,14 +18,13 @@ import { User } from '../Models/User';
   styleUrls: ['./validationdelevrance.component.css']
 })
 export class ValidationdelevranceComponent implements OnInit {
-  userc: any;
   usercarte!: User;
-
   iduserco: string | null = localStorage.getItem('id');
   inputForm!: FormGroup;
   existingCodes: { codepins: number[], codecarts: number[], numerocartes: number[] } = { codepins: [], codecarts: [], numerocartes: [] };
   lacarte!: Cartes;
-  idCarte:any;
+  idCarte: any;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -50,19 +49,19 @@ export class ValidationdelevranceComponent implements OnInit {
       this.carteservice.getCarte(this.idCarte).subscribe(
         (carte) => {
           this.lacarte = carte;
-          this.iduserco = this.lacarte.idUser;
-            this.userService.getUser(this.lacarte.idUser).subscribe(
-              (user) => {
-                this.usercarte = user;
-              },
-              (err) => {
-                console.error(err);
-              }
-            );
-          
+          this.userService.getUser(this.lacarte.idUser).subscribe(
+            (user) => {
+              this.usercarte = user;
+            },
+            (err) => {
+              console.error(err);
+              this.showError('Erreur lors de la récupération de l\'utilisateur.');
+            }
+          );
         },
         (err) => {
-          this.showError('Erreur lors de la récupération de la demande.');
+          console.error(err);
+          this.showError('Erreur lors de la récupération de la carte.');
         }
       );
     });
@@ -83,31 +82,50 @@ export class ValidationdelevranceComponent implements OnInit {
     };
     this.toastr.error(message, title, { ...toastrOptions, ...options });
   }
+
   onAccept(): void {
-
-    this.carteservice.getCarte(this.idCarte).subscribe(card => {
-      card.statut = 'Acceptée Dans La Délivrance Final '; 
-      card.delevranceF = true;
-      console.log(card);
-
-
-      this.carteservice.editCarte(this.idCarte, card).subscribe(() => {
-        this.router.navigate(["listeIdelevanceU"]);
-        console.log(card);
-      });
-    });
-    
+    this.updateCarteStatus('Acceptée Dans La Délivrance Final', true);
   }
-  onRefus(): void {
-    this.carteservice.getCarte(this.idCarte).subscribe(card => {
-      card.statut = 'Refusée dans la Délivrance Final'; 
-      card.delevranceF = true;
-      console.log(card);
 
-      this.carteservice.editCarte(this.idCarte, card).subscribe(() => {
-        this.router.navigate(["listeIdelevanceU"]);
-        console.log(card);
-      });
+  onRefus(): void {
+    this.updateCarteStatus('Refusée dans la Délivrance Final', true);
+  }
+
+  private updateCarteStatus(statut: string, delevranceF: boolean): void {
+    this.carteservice.getCarte(this.idCarte).subscribe(card => {
+      card.statut = statut; 
+      card.delevranceF = delevranceF;
+      const timestamp = card.time; // exemple de timestamp
+      const date = new Date(timestamp);
+      const formattedDate = date.toISOString().split('T')[0]; // Formater en yyyy-MM-dd
+      const dateObject: Date = new Date(formattedDate);
+      card.time=dateObject;
+
+      const naissancestamp = card.datedenaissance; // exemple de timestamp
+      const datenaissancestamp = new Date(naissancestamp);
+      const formattedDatenaissancestamp = date.toISOString().split('T')[0]; // Formater en yyyy-MM-dd
+      const dateObjectnaissance: Date = new Date(formattedDatenaissancestamp);
+      card.datedenaissance=dateObjectnaissance;
+
+      const timestampdatedevalidation = card.datedevalidation; // exemple de timestamp
+      const validationdate = new Date(timestampdatedevalidation);
+      const formattedDatetimestampdatedevalidation = date.toISOString().split('T')[0]; // Formater en yyyy-MM-dd
+      const dateObjectformattedDatetimestampdatedevalidation: Date = new Date(formattedDatetimestampdatedevalidation);
+      card.datedevalidation=dateObjectformattedDatetimestampdatedevalidation;
+
+      console.log(card)
+
+      this.carteservice.editCarte(this.idCarte, card).subscribe(
+        () => {
+          this.router.navigate(['listeIdelevanceU']);
+          this.showSuccess('Carte mise à jour avec succès.');
+        },
+        (err) => {
+          console.error(err);
+          this.showError('Erreur lors de la mise à jour de la carte.');
+        }
+      );
     });
   }
 }
+

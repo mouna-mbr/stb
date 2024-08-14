@@ -7,31 +7,27 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DemandecartesService {
-  readonly API_URL = 'http://localhost:9090/SpringMVC/demandecarte';
+  private readonly API_URL = 'http://localhost:5285/api/DemandeCartes';
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllDemandeCarte() {
-    return this.httpClient.get<any>(`${this.API_URL}/all`);
+  getAllDemandeCarte(): Observable<Demandecartes[]> {
+    return this.httpClient.get<Demandecartes[]>(this.API_URL);
   }
  
-
-  addDemandeCarte(demandedecartes: any) {
-    return this.httpClient.post(`${this.API_URL}/add`, demandedecartes);
+  addDemandeCarte(demandecarte: any): Observable<Demandecartes> {
+    return this.httpClient.post<Demandecartes>(this.API_URL, demandecarte);
   }
 
-  editDemandeCarte(id: any, demandedecartes: any) {
-    return this.httpClient.put(`${this.API_URL}/${id}`, demandedecartes);
+  editDemandeCarte(id: number, demandecarte: Demandecartes): Observable<Demandecartes> {
+    return this.httpClient.put<Demandecartes>(`${this.API_URL}/${id}`, demandecarte);
   }
 
-  deleteDemandeCarte(id: any) {
-    return this.httpClient.delete(`${this.API_URL}/delete/${id}`);
+  deleteDemandeCarte(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${this.API_URL}/${id}`);
   }
 
-  getDemandeCarte(id: any) {
+  getDemandeCarte(id: number): Observable<Demandecartes> {
     return this.httpClient.get<Demandecartes>(`${this.API_URL}/${id}`);
   }
-
-
- 
 }
