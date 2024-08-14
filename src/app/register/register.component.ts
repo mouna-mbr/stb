@@ -88,8 +88,8 @@ export class RegisterComponent implements OnInit {
       email: this.inputForm.value.email,
       confirmpassword: this.inputForm.value.confirmpassword,
       tel: this.inputForm.value.tel,
-      entreprisename: this.inputForm.value.entreprisename,
-      numcompte: this.inputForm.value.numcompte,
+      entrepriseName: this.inputForm.value.entreprisename,
+      numCompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role:"RH",
       isAGroup:this.check,
@@ -100,10 +100,10 @@ export class RegisterComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       (res: User[]) => {
         const existingUserEmail = res.find(u => u.email === user.email);
-        const existingUserName = res.find(u => u.entreprisename === user.entreprisename);
+        const existingUserName = res.find(u => u.entrepriseName === user.entrepriseName);
         const existingUserTel = res.find(u => u.tel === user.tel);
         const existingUserPassword = res.find(u => u.password === user.password);
-        const existingUserNumcompte = res.find(u => u.numcompte === user.numcompte);
+        const existingUserNumcompte = res.find(u => u.numCompte === user.numCompte);
         const existingUserMatriculeFiscale = res.find(u => u.matriculeFiscale === user.matriculeFiscale);
 
         if (existingUserEmail) {

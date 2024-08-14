@@ -4,8 +4,8 @@ export class User {
     confirmpassword!: string;
     tel!: number;
     libelledecompte!: string;
-    entreprisename!: string;
-    numcompte!: number;
+    entrepriseName!: string;
+    numCompte!: number;
     matriculeFiscale!: string;
     role!:string;
     isAGroup!:boolean;

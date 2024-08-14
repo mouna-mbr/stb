@@ -100,8 +100,8 @@ export class RhinterfaceComponent implements OnInit {
       email: this.inputForm.value.email,
       confirmpassword: this.inputForm.value.password,
       tel: this.inputForm.value.tel,
-      entreprisename: this.inputForm.value.entreprisename,
-      numcompte: this.inputForm.value.numcompte,
+      entrepriseName: this.inputForm.value.entreprisename,
+      numCompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role: "RH",
       isAGroup: false,
@@ -113,7 +113,7 @@ export class RhinterfaceComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       (res: User[]) => {
         const existingUserEmail = res.find(u => u.email === user.email);
-        const existingUserName = res.find(u => u.entreprisename === user.entreprisename);
+        const existingUserName = res.find(u => u.entrepriseName === user.entrepriseName);
         const existingUserTel = res.find(u => u.tel === user.tel);
         const existingUserPassword = res.find(u => u.password === user.password);
 

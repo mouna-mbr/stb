@@ -46,6 +46,7 @@ export class RhsousentrepriseComponent implements OnInit {
     if (this.iduserco) {
       this.userService.getUser(this.iduserco).subscribe(user => {
         this.userc = user;
+        console.log(user)
         this.userService.getAllUsers().subscribe(
           (users) => {
             const validateur = users.filter(
@@ -116,8 +117,8 @@ export class RhsousentrepriseComponent implements OnInit {
       email: this.inputForm.value.email,
       confirmpassword: this.inputForm.value.password,
       tel: this.inputForm.value.tel,
-      entreprisename: this.userc.entreprisename,
-      numcompte: this.userc.numcompte,
+      entrepriseName: this.userc.entrepriseName,
+      numCompte: this.userc.numCompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role:"validateur",
       isAGroup: false,
@@ -172,8 +173,8 @@ export class RhsousentrepriseComponent implements OnInit {
       email: this.inputFormi.value.emaili,
       confirmpassword: this.inputFormi.value.passwordi,
       tel: this.inputFormi.value.teli,
-      entreprisename: this.userc.entreprisename,
-      numcompte: this.userc.numcompte,
+      entrepriseName: this.userc.entrepriseName,
+      numCompte: this.userc.numCompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role: "initiateur",
       isAGroup: false,
