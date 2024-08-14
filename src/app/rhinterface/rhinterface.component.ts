@@ -39,14 +39,14 @@ export class RhinterfaceComponent implements OnInit {
     this.createForm();
     this.userService.getAllUsers().subscribe(
       (users) => {
-        const allUsersSameGroup = users.filter((user: User) => user.idroupemere == localStorage.getItem('id'));
+        const allUsersSameGroup = users.filter((user: User) => user.idGroupeMere == localStorage.getItem('id'));
         this.userService.getUser(localStorage.getItem('id')).subscribe(
           (user) => {
-            this.nbrentreprise = user.nbentreprise;
+            this.nbrentreprise = user.nbEntreprise;
             console.log(this.nbrentreprise)
             console.log(allUsersSameGroup.length)
             this.longue=allUsersSameGroup.length
-            if (allUsersSameGroup.length === user.nbentreprise) {
+            if (allUsersSameGroup.length === user.nbEntreprise) {
               this.isdone = true;
             }
             console.log(this.isdone)
@@ -95,19 +95,19 @@ export class RhinterfaceComponent implements OnInit {
     }
 
     const user: User = {
-      libelledecompte: "RH",
+      libelleDeCompte: "RH",
       password: this.inputForm.value.password,
       email: this.inputForm.value.email,
-      confirmpassword: this.inputForm.value.password,
+      confirmPassword: this.inputForm.value.password,
       tel: this.inputForm.value.tel,
       entrepriseName: this.inputForm.value.entreprisename,
       numCompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role: "RH",
       isAGroup: false,
-      nbentreprise: 0,
+      nbEntreprise: 0,
       isAccepted: true,
-      idroupemere: localStorage.getItem('id'),
+      idGroupeMere: localStorage.getItem('id'),
     };
 
     this.userService.getAllUsers().subscribe(

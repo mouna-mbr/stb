@@ -83,17 +83,17 @@ export class RegisterComponent implements OnInit {
     }
 
     const user: User = {
-      libelledecompte: this.inputForm.value.libelledecompte,
+      libelleDeCompte: this.inputForm.value.libelledecompte,
       password: this.inputForm.value.password,
       email: this.inputForm.value.email,
-      confirmpassword: this.inputForm.value.confirmpassword,
+      confirmPassword: this.inputForm.value.confirmpassword,
       tel: this.inputForm.value.tel,
       entrepriseName: this.inputForm.value.entreprisename,
       numCompte: this.inputForm.value.numcompte,
       matriculeFiscale: this.inputForm.value.matriculeFiscale,
       role:"RH",
       isAGroup:this.check,
-      nbentreprise:this.inputForm.value.entreprisenumber,
+      nbEntreprise:this.inputForm.value.entreprisenumber,
       isAccepted:false
     };
 

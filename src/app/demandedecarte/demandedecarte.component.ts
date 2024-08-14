@@ -41,7 +41,7 @@ export class DemandedecarteComponent implements OnInit {
           if (user.isAGroup) {
             this.userService.getAllUsers().subscribe(
               users => {
-                this.groupUsers = users.filter((u:User) => u.idroupemere === u.idUser);
+                this.groupUsers = users.filter((u:User) => u.idGroupeMere === u.idUser);
               },
               err => {
                 console.error('Error fetching users:', err);

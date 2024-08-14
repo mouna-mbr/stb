@@ -1,17 +1,17 @@
 export class User {
     password!: string;
     email!: string;
-    confirmpassword!: string;
+    confirmPassword!: string;
     tel!: number;
-    libelledecompte!: string;
+    libelleDeCompte!: string;
     entrepriseName!: string;
     numCompte!: number;
     matriculeFiscale!: string;
     role!:string;
     isAGroup!:boolean;
-    nbentreprise!:number;
+    nbEntreprise!:number;
     isAccepted?:boolean;
     idUser?:any;
-    idroupemere?:any;
+    idGroupeMere?:any;
     
 }

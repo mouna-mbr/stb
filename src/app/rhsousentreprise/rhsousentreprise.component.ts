@@ -50,10 +50,10 @@ export class RhsousentrepriseComponent implements OnInit {
         this.userService.getAllUsers().subscribe(
           (users) => {
             const validateur = users.filter(
-              (user: User) => user.idroupemere == localStorage.getItem('id') && user.role == "validateur"
+              (user: User) => user.idGroupeMere == localStorage.getItem('id') && user.role == "validateur"
             );
             const initiateur = users.filter(
-              (user: User) => user.idroupemere == localStorage.getItem('id') && user.role == "initiateur"
+              (user: User) => user.idGroupeMere == localStorage.getItem('id') && user.role == "initiateur"
             );
             console.log(validateur.length)
             if (validateur.length >=1) {
@@ -112,19 +112,19 @@ export class RhsousentrepriseComponent implements OnInit {
     }
 
     const uservalidateur: User = {
-      libelledecompte: "validateur",
+      libelleDeCompte: "validateur",
       password: this.inputForm.value.password,
       email: this.inputForm.value.email,
-      confirmpassword: this.inputForm.value.password,
+      confirmPassword: this.inputForm.value.password,
       tel: this.inputForm.value.tel,
       entrepriseName: this.userc.entrepriseName,
       numCompte: this.userc.numCompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role:"validateur",
       isAGroup: false,
-      nbentreprise: 0,
+      nbEntreprise: 0,
       isAccepted: true,
-      idroupemere: localStorage.getItem('id'),
+      idGroupeMere: localStorage.getItem('id'),
     };
 
     this.userService.getAllUsers().subscribe(
@@ -168,19 +168,19 @@ export class RhsousentrepriseComponent implements OnInit {
     }
 
     const userinitiateur: User = {
-      libelledecompte: "initiateur",
+      libelleDeCompte: "initiateur",
       password: this.inputFormi.value.passwordi,
       email: this.inputFormi.value.emaili,
-      confirmpassword: this.inputFormi.value.passwordi,
+      confirmPassword: this.inputFormi.value.passwordi,
       tel: this.inputFormi.value.teli,
       entrepriseName: this.userc.entrepriseName,
       numCompte: this.userc.numCompte,
       matriculeFiscale: this.userc.matriculeFiscale,
       role: "initiateur",
       isAGroup: false,
-      nbentreprise: 0,
+      nbEntreprise: 0,
       isAccepted: true,
-      idroupemere: localStorage.getItem('id'),
+      idGroupeMere: localStorage.getItem('id'),
     };
 
     this.userService.getAllUsers().subscribe(
