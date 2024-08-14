@@ -145,6 +145,7 @@ export class RhsousentrepriseComponent implements OnInit {
               this.showSuccess('Utilisateur créé avec succès !');
               setTimeout(() => {
                 this.success = true;
+                this.initiateur=true
                 this.inputForm.reset();
               }, 2000);
             },

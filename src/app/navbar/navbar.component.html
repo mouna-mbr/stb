@@ -4,7 +4,13 @@
       <img src="assets/img/Logo_STB.png" alt="Logo STB" loading="lazy" style="margin-top: -10px; margin-left: 40px;" class="logo" />
     </div>
     <div style="margin-left: 20px; display: flex;">
-      <div *ngIf="!rh && !rhadmine && !admine && (initiateur || validateur)">
+      <div *ngIf="!rh && !rhadmine && !admine && initiateur " style="margin-right: 28px;">
+        <a class="active" href="#home">Accueil</a>
+        <a href="demande" *ngIf="isconnected && initiateur">Demandes</a>
+        <a type="button" *ngIf="isconnected && !admine" data-bs-toggle="modal" data-bs-target="#exampleModal">Liste des demandes</a>
+        <a type="button" data-bs-toggle="modal" data-bs-target="#suivie" *ngIf="isconnected && !admine">Suivie</a>
+      </div>
+      <div *ngIf="!rh && !rhadmine && !admine &&  validateur">
         <a class="active" href="#home">Accueil</a>
         <a href="demande" *ngIf="isconnected && initiateur">Demandes</a>
         <a type="button" *ngIf="isconnected && !admine" data-bs-toggle="modal" data-bs-target="#exampleModal">Liste des demandes</a>
