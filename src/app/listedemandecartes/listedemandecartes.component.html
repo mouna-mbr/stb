@@ -12,16 +12,16 @@
          <span class="name">TOUT</span>
        </label>
        <label class="radio">
-         <input type="radio" name="radio" (click)="loadDemandeCartestoday()" />
+         <input type="radio" name="radio" (click)="loadDemandeCartesToday()" />
          <span class="name">Aujourd'hui</span>
        </label>
      
        <label class="radio">
-         <input type="radio" name="radio" (click)="loadDemandeCarteslastday()" />
+         <input type="radio" name="radio" (click)="loadDemandeCartesLastDay()" />
          <span class="name">Hier</span>
        </label>
        <label class="radio">
-        <input type="radio" name="radio" (click)="loadDemandeCarteslastday()"  />
+        <input type="radio" name="radio" (click)="loadDemandeCartesThisWeek()"  />
         <span class="name">Cette semaine</span>
       </label>
      </div>
@@ -43,9 +43,9 @@
          
                 <tr *ngFor="let usr of listDemandeCartes; let i = index">
                     <th scope="row" style="color: #0567a4">{{ i + 1 }}</th>
-                    <td>{{ usr.user?.entreprisename }}</td>
-                    <td>{{ usr.user?.numcompte }}</td>
-                    <td >{{ usr.nombredescarte }}</td>
+                    <td>{{ usr.user?.entrepriseName }}</td>
+                    <td>{{ usr.user?.numCompte }}</td>
+                    <td >{{ usr.nombreDeCartes }}</td>
                     <td><a (click)="getDemande(usr.idCarte)" style="color: #0078c5; text-decoration: underline;">Plus...</a></td>
                   </tr>
             </tbody>

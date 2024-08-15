@@ -173,26 +173,27 @@ loadDemandeCartes(): void {
 
   getDemande(idDemande: any): void {
     this.listDemandeCartes.forEach(demande => {
-      if (demande.nombredescarte === 1) {
-        this.demandeService.getDemandeCarte(idDemande).subscribe(
-          (res) => {
-            if (res.nombredescarte === 1) {
-              if(res.statut==="Acceptée Dans La Validation Final "){
-                this.router.navigate(['carteunitaire', idDemande]);
-              }else{
-                this.showError("Votre demande n'est pas encore validée !");
-              }
-            } else { 
-              if(res.statut==="Acceptée Dans La Validation Final "){
-                this.router.navigate(['carteenmasse',idDemande]);
-              }else{
-                this.showError("Votre demande n'est pas encore validée !");
-              }
-              
+      this.demandeService.getDemandeCarte(idDemande).subscribe(
+        (res) => {
+          if (res.nombreDeCartes === 1) {
+            if (res.statut === "Acceptée Dans La Validation Final ") {
+              this.router.navigate(['carteunitaire', idDemande]);
+            } else {
+              this.showError("Votre demande n'est pas encore validée !");
+            }
+          } else {
+            if (res.statut === "Acceptée Dans La Validation Final ") {
+              this.router.navigate(['carteenmasse', idDemande]);
+            } else {
+              this.showError("Votre demande n'est pas encore validée !");
             }
           }
-        );
-      }
+        },
+        (err) => {
+          console.error('Error fetching demande carte:', err);
+        }
+      );
     });
   }
+  
 }

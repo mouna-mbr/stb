@@ -87,7 +87,7 @@ export class DemandedecarteComponent implements OnInit {
     }
 
     const demandeCarte: Demandecarteswithoutid = {
-      nombredescarte: this.inputForm.value.nombredescarte,
+      nombreDeCartes: this.inputForm.value.nombredescarte,
       idUser: this.iduserco!, // Assurez-vous que l'ID de l'utilisateur est un string
       commentaire: this.inputForm.value.commentaire,
       validationI: false,

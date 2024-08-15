@@ -42,9 +42,9 @@
          
                 <tr *ngFor="let usr of listDemandeCartes; let i = index">
                     <th scope="row" style="color: #0567a4">{{ i + 1 }}</th>
-                    <td>{{ usr.user?.entreprisename }}</td>
-                    <td>{{ usr.user?.numcompte }}</td>
-                    <td >{{ usr.nombredescarte }}</td>
+                    <td>{{ usr.user?.entrepriseName }}</td>
+                    <td>{{ usr.user?.numCompte }}</td>
+                    <td >{{ usr.nombreDeCartes }}</td>
                     <td><a (click)="getDemande(usr.idCarte)" style="color: #0078c5; text-decoration: underline;">Plus...</a></td>
                   </tr>
             </tbody>

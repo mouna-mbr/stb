@@ -27,26 +27,23 @@ export class ListedemandecartesComponent implements OnInit {
     private demandeService: DemandecartesService,
     private userService: userservice,
     private toastr: ToastrService
-
-
   ) {}
 
   ngOnInit(): void {
     this.loadDemandeCartes();
+
   }
 
   loadDemandeCartes(): void {
     this.demandeService.getAllDemandeCarte().subscribe(
       (res) => {
-        this.listDemandeCartes = res.filter((demande: Demandecartes) => 
-          demande.validationI === false 
-        
-        );
-
-        // Charger les utilisateurs pour chaque demande
+        this.listDemandeCartes = res.filter((demande: Demandecartes) => demande.validationI === false);
+        console.log(this.listDemandeCartes)
+        // Load users for each demande
         this.listDemandeCartes.forEach(demande => {
           this.userService.getUser(demande.idUser).subscribe(
             (user) => {
+              console.log(user)
               demande.user = user;
             },
             (err) => {
@@ -61,20 +58,18 @@ export class ListedemandecartesComponent implements OnInit {
     );
   }
  
-  loadDemandeCartestoday(): void {
+  loadDemandeCartesToday(): void {
     const today = new Date();
-    today.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
+    today.setHours(0, 0, 0, 0);
 
     this.demandeService.getAllDemandeCarte().subscribe(
       (res) => {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
-          demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
-          return demande.validationI === false &&
-                 demandeDate.getTime() === today.getTime();
+          demandeDate.setHours(0, 0, 0, 0);
+          return demande.validationI === false && demandeDate.getTime() === today.getTime();
         });
 
-        // Charger les utilisateurs pour chaque demande
         this.listDemandeCartes.forEach(demande => {
           this.userService.getUser(demande.idUser).subscribe(
             (user) => {
@@ -92,21 +87,19 @@ export class ListedemandecartesComponent implements OnInit {
     );
   }
 
-  
-  loadDemandeCarteslastday(): void {
+  loadDemandeCartesLastDay(): void {
     const yesterday = new Date();
-    yesterday.setDate(yesterday.getDate() - 1); // Récupère la date d'hier
-    yesterday.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
+    yesterday.setDate(yesterday.getDate() - 1);
+    yesterday.setHours(0, 0, 0, 0);
 
     this.demandeService.getAllDemandeCarte().subscribe(
       (res) => {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
-          demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
-          return demande.validationI === false &&demandeDate.getTime() === yesterday.getTime();
+          demandeDate.setHours(0, 0, 0, 0);
+          return demande.validationI === false && demandeDate.getTime() === yesterday.getTime();
         });
 
-        // Charger les utilisateurs pour chaque demande
         this.listDemandeCartes.forEach(demande => {
           this.userService.getUser(demande.idUser).subscribe(
             (user) => {
@@ -124,21 +117,19 @@ export class ListedemandecartesComponent implements OnInit {
     );
   }
 
-    
-  loadDemandeCartesthisweek(): void {
+  loadDemandeCartesThisWeek(): void {
     const today = new Date();
-    const startOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay()); // Détermine le début de la semaine
-    startOfWeek.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
+    const startOfWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
+    startOfWeek.setHours(0, 0, 0, 0);
 
     this.demandeService.getAllDemandeCarte().subscribe(
       (res) => {
         this.listDemandeCartes = res.filter((demande: Demandecartes) => {
           const demandeDate = new Date(demande.time);
-          demandeDate.setHours(0, 0, 0, 0); // Remettre à zéro les heures, minutes, secondes et millisecondes pour comparer la date uniquement
+          demandeDate.setHours(0, 0, 0, 0);
           return demande.validationI === false && demandeDate >= startOfWeek && demandeDate <= today;
         });
 
-        // Charger les utilisateurs pour chaque demande
         this.listDemandeCartes.forEach(demande => {
           this.userService.getUser(demande.idUser).subscribe(
             (user) => {
@@ -155,18 +146,19 @@ export class ListedemandecartesComponent implements OnInit {
       }
     );
   }
-  
-  getDemande(idDemande:any){
-    this.demandeService.getDemandeCarte(idDemande).subscribe(
-      res=>{
-        if(res.idUser==null){
 
-        }else{
-          this.router.navigate(['validationi',idDemande]);
+  getDemande(idDemande: any): void {
+    this.demandeService.getDemandeCarte(idDemande).subscribe(
+      (res) => {
+        if (res.idUser == null) {
+          // Handle case where idUser is null
+        } else {
+          this.router.navigate(['validationi', idDemande]);
         }
+      },
+      (err) => {
+        console.error('Error fetching demande carte:', err);
       }
-    )
-  
-    
+    );
   }
 }

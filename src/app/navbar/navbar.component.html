@@ -10,7 +10,7 @@
         <a type="button" *ngIf="isconnected && !admine" data-bs-toggle="modal" data-bs-target="#exampleModal">Liste des demandes</a>
         <a type="button" data-bs-toggle="modal" data-bs-target="#suivie" *ngIf="isconnected && !admine">Suivie</a>
       </div>
-      <div *ngIf="!rh && !rhadmine && !admine &&  validateur">
+      <div *ngIf="!rh && !rhadmine && !admine &&  validateur" style="margin-right: 112px;">
         <a class="active" href="#home">Accueil</a>
         <a href="demande" *ngIf="isconnected && initiateur">Demandes</a>
         <a type="button" *ngIf="isconnected && !admine" data-bs-toggle="modal" data-bs-target="#exampleModal">Liste des demandes</a>

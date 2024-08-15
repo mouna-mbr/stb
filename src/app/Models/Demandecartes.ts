@@ -1,7 +1,7 @@
 import { Time } from "@angular/common";
 
 export class Demandecartes{
-    nombredescarte!:number;
+    nombreDeCartes!:number;
     idUser!:any;
     commentaire!:string;
     validationI!:boolean;
@@ -12,7 +12,7 @@ export class Demandecartes{
     time!:any;
 }
 export class Demandecarteswithoutid{
-    nombredescarte!:number;
+    nombreDeCartes!:number;
     idUser!:any;
     commentaire!:string;
     validationI!:boolean;
