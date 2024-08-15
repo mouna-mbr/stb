@@ -44,9 +44,9 @@
                     <tbody>
                       <tr *ngFor="let usr of listCartes; let i = index">
                         <th scope="row" style="color: #0567a4">{{ i + 1 }}</th>
-                        <td>{{ usr.user?.entreprisename }}</td>
-                        <td>{{ usr.user?.numcompte }}</td>
-                        <td>{{ usr.nomprenom }}</td>
+                        <td>{{ usr.user?.entrepriseName }}</td>
+                        <td>{{ usr.user?.numCompte }}</td>
+                        <td>{{ usr.nomPrenom }}</td>
                         <td>{{ getFormattedCardNumberr(usr) }}</td>
                         <td>{{ usr.cin }}</td>
                         <td>{{ usr.statut }}</td>
@@ -88,7 +88,7 @@
                                             </svg>
                                             <div class="card__chip-texture" style="margin-left: 30px;"></div>
                                         </div>
-                                        <span class="card__digit-group" style="margin-left: 150px;">{{selectedCarte?.nomprenom}}</span><br>
+                                        <span class="card__digit-group" style="margin-left: 150px;">{{selectedCarte?.nomPrenom}}</span><br>
                                         <div class="card__number" style="margin-left: 30px;">
                                             <!-- Template Angular -->
                                             <span class="card__digit-group" style="size: 20px;">
@@ -109,7 +109,7 @@
                                 <div class="strip"></div>
                                 <div class="mstrip"></div>
                                 <div class="sstrip">
-                                    <p class="code">{{selectedCarte?.codepin}}</p>
+                                    <p class="code">{{selectedCarte?.codePin}}</p>
                                 </div>
                             </div>
                         </div>

@@ -192,12 +192,12 @@ export class SuivialldelivranceComponent implements OnInit {
     return number.replace(/^(\d{4})(\d{4})(\d{4})(\d{4})$/, 'XXXX $2 $3 XXXX');
   }
   getFormattedCardNumberr(carte: Cartes): string {
-    return carte ? this.formatCardNumber(String(carte.numeroducarte)) : '';
+    return carte ? this.formatCardNumber(String(carte.numeroDuCarte)) : '';
   }
 
   
   getFormattedCardNumber(): string {
-    return this.selectedCarte ? this.formatCardNumber(String(this.selectedCarte.numeroducarte)) : '';
+    return this.selectedCarte ? this.formatCardNumber(String(this.selectedCarte.numeroDuCarte)) : '';
   }
   
 

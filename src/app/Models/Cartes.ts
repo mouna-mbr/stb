@@ -1,13 +1,13 @@
 export class Cartes{
     cin!:number;
     gsm!:number;
-    nomprenom!:String;
-    datedenaissance!:Date;
-    datedevalidation!:Date;
-    codepin!:number;
-    codecarte!:number;
+    nomPrenom!:String;
+    dateDeNaissance!:Date;
+    dateDeValidation!:Date;
+    codePin!:number;
+    codeCarte!:number;
     idUser!:any;
-    numeroducarte!:number;
+    numeroDuCarte!:number;
     email!:String;
     statut!:String;
     delevranceF!:boolean;

@@ -40,7 +40,7 @@ export class ValidationdelevranceComponent implements OnInit {
   }
 
   getFormattedCardNumber(): string {
-    return this.lacarte ? this.formatCardNumber(String(this.lacarte.numeroducarte)) : '';
+    return this.lacarte ? this.formatCardNumber(String(this.lacarte.numeroDuCarte)) : '';
   }
 
   ngOnInit(): void {
@@ -101,17 +101,17 @@ export class ValidationdelevranceComponent implements OnInit {
       const dateObject: Date = new Date(formattedDate);
       card.time=dateObject;
 
-      const naissancestamp = card.datedenaissance; // exemple de timestamp
+      const naissancestamp = card.dateDeNaissance; // exemple de timestamp
       const datenaissancestamp = new Date(naissancestamp);
       const formattedDatenaissancestamp = date.toISOString().split('T')[0]; // Formater en yyyy-MM-dd
       const dateObjectnaissance: Date = new Date(formattedDatenaissancestamp);
-      card.datedenaissance=dateObjectnaissance;
+      card.dateDeNaissance=dateObjectnaissance;
 
-      const timestampdatedevalidation = card.datedevalidation; // exemple de timestamp
+      const timestampdatedevalidation = card.dateDeValidation; // exemple de timestamp
       const validationdate = new Date(timestampdatedevalidation);
       const formattedDatetimestampdatedevalidation = date.toISOString().split('T')[0]; // Formater en yyyy-MM-dd
       const dateObjectformattedDatetimestampdatedevalidation: Date = new Date(formattedDatetimestampdatedevalidation);
-      card.datedevalidation=dateObjectformattedDatetimestampdatedevalidation;
+      card.dateDeValidation=dateObjectformattedDatetimestampdatedevalidation;
 
       console.log(card)
 

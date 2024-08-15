@@ -49,9 +49,9 @@ export class DelevranceunitaireComponent implements OnInit {
 
     // Fetch all existing codes
     this.carteservice.getAllCartes().subscribe((cartes: Cartes[]) => {
-      this.existingCodes.codepins = cartes.map(carte => carte.codepin);
-      this.existingCodes.codecarts = cartes.map(carte => carte.codecarte);
-      this.existingCodes.numerocartes = cartes.map(carte => carte.numeroducarte);
+      this.existingCodes.codepins = cartes.map(carte => carte.codePin);
+      this.existingCodes.codecarts = cartes.map(carte => carte.codeCarte);
+      this.existingCodes.numerocartes = cartes.map(carte => carte.numeroDuCarte);
     });
   }
 
@@ -86,12 +86,12 @@ export class DelevranceunitaireComponent implements OnInit {
         idUser: this.iduserco,
         gsm: this.inputForm.value.gsm,
         email: this.inputForm.value.email,
-        datedenaissance: this.inputForm.value.datedenaissance,
-        nomprenom: this.inputForm.value.nomprenom,
-        datedevalidation: datedevalidation,
-        codepin: codepin,
-        codecarte: codecarte,
-        numeroducarte: numeroducarte,
+        dateDeNaissance: this.inputForm.value.datedenaissance,
+        nomPrenom: this.inputForm.value.nomprenom,
+        dateDeValidation: datedevalidation,
+        codePin: codepin,
+        codeCarte: codecarte,
+        numeroDuCarte: numeroducarte,
         delevranceF: false,
         delevranceI: true,
         time: new Date(),

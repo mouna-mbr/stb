@@ -42,59 +42,62 @@ export class DelevranceenmasseComponent {
       });
     }
   }
-
   onSubmit(): void {
     if (this.csvData.length === 0) {
       this.showError('Aucune donnée CSV à envoyer.');
       return;
     }
   
-    // Filtrer les données CSV pour enlever les lignes nulles ou vides (double vérification)
     const filteredCsvData = this.csvData.filter(row => row && row.length > 0 && row.some((cell: string) => cell !== ''));
-  
     console.log(filteredCsvData.length);
+  
     this.actRoute.params.subscribe((param) => {
       const idDemande = param['id'];
-    // Traiter les données CSV pour créer des cartes
-    filteredCsvData.forEach((row) => {
-      
-      if (row != null) {
-        const carte: Cartes = {
-          cin: row[3],
-          gsm: row[5],
-          email: row[6],
-          nomprenom: row[0] + " " + row[1],
-          datedenaissance: row[4],
-          datedevalidation: new Date(new Date().setFullYear(new Date().getFullYear() + 4)),
-          codepin: this.generateUniqueCode(100, 900), // Remplacer par une méthode pour assurer l'unicité
-          codecarte: this.generateUniqueCode(1000, 9000), // Remplacer par une méthode pour assurer l'unicité
-          numeroducarte: this.generateUniqueCode(1000000000000000, 9000000000000000), // Remplacer par une méthode pour assurer l'unicité
-          delevranceF: false,
-          delevranceI: true,
-          idUser: localStorage.getItem('id')!, // Assurez-vous que cet ID est valide
-          time: new Date(),
-          statut: 'En Attente',
-          idDemande: idDemande // Vous devrez peut-être remplacer ceci par l'ID réel de la demande
-        };
   
-        console.log(carte);
-  
-        // Appel au service pour ajouter une carte
-        this.carteService.addCarte(carte).subscribe(
-          () => {
-            this.showSuccess('Carte créée avec succès !');
-            this.router.navigate(["listeIdelevanceU"]);
-
-          },
-          error => {
-            this.showError('Une erreur est survenue lors de la création de la carte.');
+      filteredCsvData.forEach((row) => {
+        if (row != null) {
+          let dateDeNaissance = row[4];
+          if (dateDeNaissance && dateDeNaissance.includes('/')) {
+            const dateParts = dateDeNaissance.split('/');
+            dateDeNaissance = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`; // Convertir en format ISO
           }
-        );
-      }
+  
+          const carte: Cartes = {
+            cin: row[3],
+            gsm: row[5],
+            email: row[6],
+            nomPrenom: `${row[0]} ${row[1]}`,
+            dateDeNaissance: dateDeNaissance,
+            dateDeValidation: new Date(new Date().setFullYear(new Date().getFullYear() + 4)),
+            codePin: this.generateUniqueCode(100, 900),
+            codeCarte: this.generateUniqueCode(1000, 9000),
+            numeroDuCarte: this.generateUniqueCode(1000000000000000, 9000000000000000),
+            delevranceF: false,
+            delevranceI: true,
+            idUser: localStorage.getItem('id')!,
+            time: new Date(),
+            statut: 'En Attente',
+            idDemande: idDemande
+          };
+  
+          console.log("Payload:", JSON.stringify(carte));
+  
+          this.carteService.addCarte(carte).subscribe(
+            () => {
+              this.showSuccess('Carte créée avec succès !');
+              this.router.navigate(["listeIdelevanceU"]);
+            },
+            (error) => {
+              this.showError('Une erreur est survenue lors de la création de la carte.');
+              console.error("Erreur:", error);
+            }
+          );
+        }
+      });
     });
-    }
-    // Supposons que les données CSV aient les colonnes dans l'ordre suivant: cin, gsm, email, nomprenom, datedenaissance
-  )}
+  }
+  
+  
   
 
   generateUniqueCode(min: number, max: number): number {

@@ -175,7 +175,7 @@ loadDemandeCartes(): void {
     this.listDemandeCartes.forEach(demande => {
       this.demandeService.getDemandeCarte(idDemande).subscribe(
         (res) => {
-          if (res.nombreDeCartes === 1) {
+          if (res.nombreDeCartes === 0) {
             if (res.statut === "Acceptée Dans La Validation Final ") {
               this.router.navigate(['carteunitaire', idDemande]);
             } else {
